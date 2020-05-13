@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/level_pages_background">
+
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="230dp"
+        android:layout_height="20dp"
+        android:text="Question2:"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/scoreText"
+        android:layout_width="170dp"
+        android:layout_height="20dp"
+        android:text="@string/global_scoreText"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/questionText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/questionContent"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="3(2+☆)-☆=10"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionText" />
+
+    <TextView
+        android:id="@+id/scoreContent"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:textColor="@color/yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scoreText" />
+
+    <Switch
+        android:id="@+id/skipSwitch"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:thumb="@color/Transparent"
+        android:track="@color/Transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/questionContent"
+        app:layout_constraintEnd_toEndOf="@+id/questionContent"
+        app:layout_constraintStart_toStartOf="@+id/questionContent"
+        app:layout_constraintTop_toBottomOf="@+id/questionText" />
+
+    <TableLayout
+        android:layout_width="240dp"
+        android:layout_height="480dp"
+        android:background="@drawable/level2_page_table_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/block000"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+            <Button
+                android:id="@+id/block001"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+            <Button
+                android:id="@+id/block002"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/block010"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+            <Button
+                android:id="@+id/block011"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+            <Button
+                android:id="@+id/block012"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/block020"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+            <Button
+                android:id="@+id/block021"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+            <Button
+                android:id="@+id/block022"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/block030"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+            <Button
+                android:id="@+id/block031"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+            <Button
+                android:id="@+id/block032"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/block040"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+            <Button
+                android:id="@+id/block041"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+            <Button
+                android:id="@+id/block042"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/block050"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+            <Button
+                android:id="@+id/block051"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+            <Button
+                android:id="@+id/block052"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/chronometerText"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:text="@string/global_timerText"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.975" />
+
+    <Chronometer
+        android:id="@+id/chronometerTimer"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:textColor="#F8F2AD"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/chronometerText"
+        app:layout_constraintEnd_toStartOf="@+id/redealButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/chronometerText"
+        app:layout_constraintTop_toTopOf="@+id/chronometerText"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:background="@color/TranslucentLightRed"
+        android:text="@string/global_backButtonText"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/chronometerText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="01"
+        app:layout_constraintStart_toEndOf="@+id/chronometerText"
+        app:layout_constraintTop_toTopOf="@+id/chronometerText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/redealButton"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:background="@color/TranslucentLightGreen"
+        android:text="@string/global_redealButtonText"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/chronometerText"
+        app:layout_constraintEnd_toStartOf="@+id/backButton"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toEndOf="@+id/chronometerText"
+        app:layout_constraintTop_toTopOf="@+id/chronometerText"
+        app:layout_constraintVertical_bias="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
