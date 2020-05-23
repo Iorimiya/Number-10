@@ -11,9 +11,6 @@ public class Level1 extends LevelActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.level1_page);
-        chronometer=findViewById(R.id.chronometerTimer);
-        chronometer.setBase(SystemClock.elapsedRealtime());
-        chronometer.start();
         ((Switch)findViewById(R.id.skipSwitch)).setChecked(GlobalSettings.skipControl);
         ((Switch)findViewById(R.id.skipSwitch)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             @Override
@@ -37,5 +34,13 @@ public class Level1 extends LevelActivity {
                 finish();
             }
         });
+        gamePrepare();
+    }
+
+    @Override
+    protected boolean gamePrepare(){
+        chronometer=findViewById(R.id.chronometerTimer);
+        timerControl(State.start);
+        return true;
     }
 }
