@@ -10,6 +10,6 @@ public class Block {
         this.button=button;
         this.row=row;
         this.column=column;
-        this.exist=true;
+        if(this.button!=null) this.exist=true;
     }
 }

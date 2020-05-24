@@ -41,4 +41,9 @@ public class Level1 extends LevelActivity {
     protected void gamePrepare(int row,int column){
         super.gamePrepare(row,column);
     }
+    @Override
+    protected boolean connectionAnalysis(){
+        System.out.println("s");
+        return false;
+    }
 }

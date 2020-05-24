@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public abstract class LevelActivity extends GlobalSettings{
     //Base Object
     protected int totalRow,totalColumn;
-    protected ArrayList<ArrayList<Block>> BlockSimulatorMap;
+    protected ArrayList<ArrayList<Block>> blockSimulatorMap;
     protected Chronometer chronometer;
     protected TextView scoreDisplayArea;
 
@@ -37,57 +37,64 @@ public abstract class LevelActivity extends GlobalSettings{
         totalRow=row;
         totalColumn=column;
         nowClickedState=ClickedState.none;
-        /*
-        Blocks=new ArrayList<>();
-
-        for(int rowCounter=0;rowCounter<totalRow;rowCounter++){
-            ArrayList<Block> rowTemp =new ArrayList<>();
-            for(int columnCounter=0;columnCounter<totalColumn;columnCounter++){
-                String blockName=String.format("block%02d%d",rowCounter,columnCounter);
-                int blockID=getResources().getIdentifier(blockName, "id", getPackageName());
-                View blockView=findViewById(blockID);
-                Button blockButton=(Button)blockView;
-                Block blockObject=new Block(blockButton,rowCounter,columnCounter);
-                rowTemp.add(blockObject);
-                rowTemp.get(columnCounter).button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        switch(nowClickedState){
-                            case none:
-                                //nowClickedState=ClickedState.once;
-                                v.setEnabled(false);
-                                System.out.println(v.getResources().getResourceEntryName(v.getId()));
-                                break;
-                            case once:
-                                nowClickedState=ClickedState.none;
-                                break;
-                        }
-                    }
-                });
+        blockSimulatorMap=new ArrayList<>();
+        for(int rowCounter=0;rowCounter<totalRow+2;rowCounter++){
+            ArrayList<Block> rowTemp=new ArrayList<>();
+            for(int columnCounter=0;columnCounter<totalColumn+2;columnCounter++){
+                if(rowCounter==0||rowCounter==totalRow+1||columnCounter==0||columnCounter==totalColumn+1) rowTemp.add(new Block(null,rowCounter,columnCounter));
+                else rowTemp.add(new Block((Button)findViewById(getResources().getIdentifier(String.format("block%02d%d",rowCounter,columnCounter),"id",getPackageName())),rowCounter,columnCounter));
             }
-            Blocks.add(rowTemp);
+            blockSimulatorMap.add(rowTemp);
         }
-        blockSimulatorMap=new ArrayList<>(totalRow+2);
-        for(int rowCounter=0;rowCounter<blockSimulatorMap.size();rowCounter++){
-            ArrayList<Boolean> rowTemp=new ArrayList<>(totalColumn+2);
-            for(int columnCounter=0;columnCounter<rowTemp.size();columnCounter++){
-               if(rowCounter==0||rowCounter==blockSimulatorMap.size()-1||columnCounter==0||columnCounter<rowTemp.size()-1)
-                   rowTemp.set(columnCounter,false);
-               else rowTemp.set(columnCounter,true);
-            }
-            blockSimulatorMap.set(rowCounter,rowTemp);
-        }
-        */
         chronometer=findViewById(R.id.chronometerTimer);
         scoreDisplayArea=findViewById(R.id.scoreText);
         //Start Timer
         timerControl(TimerState.start);
+        //Add Click Listener
+        for(int rowCounter=1;rowCounter<=totalRow;rowCounter++){
+            for(int columnCounter=1;columnCounter<=totalColumn;columnCounter++){
+                final int finalRowCounter = rowCounter,finalColumnCounter=columnCounter;
+                blockSimulatorMap.get(rowCounter).get(columnCounter).button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        switch (nowClickedState){
+                            case none:
+                                nowClickedState=ClickedState.once;
+                                firstClicked=blockSimulatorMap.get(finalRowCounter).get(finalColumnCounter);
+                                firstClicked.button.setEnabled(false);
+                                break;
+                            case once:
+                                nowClickedState=ClickedState.none;
+                                secondClicked=blockSimulatorMap.get(finalRowCounter).get(finalColumnCounter);
+                                secondClicked.button.setEnabled(false);
+                                if(connectionAnalysis()){
+                                    firstClicked.button.setVisibility(Button.INVISIBLE);
+                                    firstClicked.exist=false;
+                                    secondClicked.button.setVisibility(Button.INVISIBLE);
+                                    secondClicked.exist=false;
+                                }else{
+                                    firstClicked.button.setEnabled(true);
+                                    secondClicked.button.setEnabled(true);
+                                }
+                                firstClicked=null;
+                                secondClicked=null;
+                                break;
+                            default:
+                                throw new IllegalStateException("Unexpected value: " + nowClickedState);
+                        }
+                    }
+                });
+            }
+        }
+
+
     };
     protected void redeal(){
 
     }
-    protected void analyzeConnection(){
-
+    protected boolean connectionAnalysis(){
+        System.out.println("f");
+        return false;
     }
     protected void timerControl(TimerState control){
         if(control==TimerState.start) {
