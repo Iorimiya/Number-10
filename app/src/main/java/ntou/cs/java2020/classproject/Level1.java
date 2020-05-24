@@ -8,6 +8,7 @@ import android.widget.*;
 
 import java.nio.ByteBuffer;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 
 public class Level1 extends LevelActivity {
     @Override
@@ -54,10 +55,19 @@ public class Level1 extends LevelActivity {
         for(int firstCounter=1;firstCounter<=10;firstCounter++){
             for(int secondCounter=1;secondCounter<=10;secondCounter++){
                 if(firstCounter*secondCounter==10){
-                    for()
+                    boolean duplication=false;
+                    for(ArrayList<Integer>pair:ConnectibleNumbers) {
+                        if ((firstCounter == pair.get(0) && secondCounter == pair.get(1)) || (firstCounter == pair.get(1) && secondCounter == pair.get(0))) duplication=true;
+                    }
+                    if(!duplication) {
+                        ArrayList<Integer> temp = new ArrayList<>();
+                        temp.add(firstCounter);
+                        temp.add(secondCounter);
+                        ConnectibleNumbers.add(temp);
+                    }
                 }
             }
         }
-
+        super.deal();
     }
 }

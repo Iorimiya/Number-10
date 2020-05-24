@@ -79,17 +79,20 @@
             <Button
                 android:id="@+id/block011"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block012"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/block013"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp"/>
         </TableRow>
 
         <TableRow
@@ -99,17 +102,21 @@
             <Button
                 android:id="@+id/block021"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp"/>
+
 
             <Button
                 android:id="@+id/block022"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block023"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp"/>
         </TableRow>
 
         <TableRow
@@ -119,17 +126,20 @@
             <Button
                 android:id="@+id/block031"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block032"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/block033"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp"/>
         </TableRow>
 
         <TableRow
@@ -139,17 +149,20 @@
             <Button
                 android:id="@+id/block041"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block042"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block043"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp"/>
         </TableRow>
 
         <TableRow
@@ -159,17 +172,20 @@
             <Button
                 android:id="@+id/block051"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block052"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block053"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp"/>
 
         </TableRow>
 
@@ -180,17 +196,20 @@
             <Button
                 android:id="@+id/block061"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block062"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block063"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:textSize="24sp"/>
         </TableRow>
 
     </TableLayout>

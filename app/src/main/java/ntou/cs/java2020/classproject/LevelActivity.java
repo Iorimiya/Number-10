@@ -107,8 +107,22 @@ public abstract class LevelActivity extends GlobalSettings{
     };
     protected void deal(){
         SecureRandom SR=new SecureRandom(ByteBuffer.allocate(4).putInt((int) (System.currentTimeMillis() / 1000)).array());
-        OriginPair firstPair=new OriginPair(SR.nextInt(totalRow)+1,SR.nextInt(totalColumn)+1),secondPair=new OriginPair(SR.nextInt(totalRow)+1,SR.nextInt(totalColumn)+1);
-//        firstPair.value=ConnectibleNumbers.get(SR.nextInt(ConnectibleNumbers.size()));
+
+        for(int hasNumberCounter=0;hasNumberCounter<totalColumn*totalRow;){
+            OriginPair firstPair=new OriginPair(SR.nextInt(totalRow)+1,SR.nextInt(totalColumn)+1),secondPair=new OriginPair(SR.nextInt(totalRow)+1,SR.nextInt(totalColumn)+1);
+            if((firstPair.row==secondPair.row&&firstPair.column==secondPair.column)||blockSimulatorMap.get(firstPair.row).get(firstPair.column).hasNumber||blockSimulatorMap.get(secondPair.row).get(secondPair.column).hasNumber) continue;
+            int tempSR=SR.nextInt(ConnectibleNumbers.size());
+            firstPair.value=ConnectibleNumbers.get(tempSR).get(0);
+            secondPair.value=ConnectibleNumbers.get(tempSR).get(1);
+            blockSimulatorMap.get(firstPair.row).get(firstPair.column).value=firstPair.value;
+            blockSimulatorMap.get(firstPair.row).get(firstPair.column).button.setText(String.valueOf(firstPair.value));
+            blockSimulatorMap.get(firstPair.row).get(firstPair.column).hasNumber=true;
+            blockSimulatorMap.get(secondPair.row).get(secondPair.column).value=secondPair.value;
+            blockSimulatorMap.get(secondPair.row).get(secondPair.column).button.setText(String.valueOf(secondPair.value));
+            blockSimulatorMap.get(secondPair.row).get(secondPair.column).hasNumber=true;
+            hasNumberCounter+=2;
+        }
+
     }
     protected void redeal(){
 
