@@ -7,24 +7,35 @@ import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
+import java.nio.ByteBuffer;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 
 public abstract class LevelActivity extends GlobalSettings{
     //Base Object
     protected int totalRow,totalColumn;
+//    該關卡的實際行列數(不含最外圈)
     protected ArrayList<ArrayList<Block>> blockSimulatorMap;
+//    以Block組成Map，map的大小會是顯示行列各+2(上下、左右)
     protected Chronometer chronometer;
+//    計時器物件
     protected TextView scoreDisplayArea;
+//    分數顯示區域
 
     //Event Object
     protected Block firstClicked,secondClicked;
+//    被按到的先後物件
     protected ClickedState nowClickedState;
+//    分辨沒有按鈕被按下、按下第一個按鈕和按下第二個按鈕的FSM指示變數
+    protected ArrayList<ArrayList<Integer>> ConnectibleNumbers=new ArrayList<>();
 
     //game parameter
     protected int score;
+//    分數
     protected enum TimerState {start,end;}
+//    分辨計時參數為開始或結束的列舉
     protected enum ClickedState{none,once;}
-
+//    分辨沒有按鈕被按下、按下第一個按鈕和按下第二個按鈕的FSM指示列舉
 
     //method
     @Override
@@ -37,6 +48,8 @@ public abstract class LevelActivity extends GlobalSettings{
         totalRow=row;
         totalColumn=column;
         nowClickedState=ClickedState.none;
+
+//        最外圈以外的Block連結到按鈕
         blockSimulatorMap=new ArrayList<>();
         for(int rowCounter=0;rowCounter<totalRow+2;rowCounter++){
             ArrayList<Block> rowTemp=new ArrayList<>();
@@ -46,10 +59,12 @@ public abstract class LevelActivity extends GlobalSettings{
             }
             blockSimulatorMap.add(rowTemp);
         }
+
         chronometer=findViewById(R.id.chronometerTimer);
         scoreDisplayArea=findViewById(R.id.scoreText);
         //Start Timer
         timerControl(TimerState.start);
+
         //Add Click Listener
         for(int rowCounter=1;rowCounter<=totalRow;rowCounter++){
             for(int columnCounter=1;columnCounter<=totalColumn;columnCounter++){
@@ -58,20 +73,22 @@ public abstract class LevelActivity extends GlobalSettings{
                     @Override
                     public void onClick(View v) {
                         switch (nowClickedState){
+//                            還沒有任何按鈕被按時：設定狀態為按下一顆按鈕，將被按下的按鈕連結到firstClicked上，讓該按鈕失效(避免重複按下+提示使用者被按下的按鈕)。
                             case none:
                                 nowClickedState=ClickedState.once;
                                 firstClicked=blockSimulatorMap.get(finalRowCounter).get(finalColumnCounter);
                                 firstClicked.button.setEnabled(false);
                                 break;
+//                            按下一顆：如果連結合規->讓該按鈕消失，else：回復原狀
                             case once:
                                 nowClickedState=ClickedState.none;
                                 secondClicked=blockSimulatorMap.get(finalRowCounter).get(finalColumnCounter);
                                 secondClicked.button.setEnabled(false);
                                 if(connectionAnalysis()){
                                     firstClicked.button.setVisibility(Button.INVISIBLE);
-                                    firstClicked.exist=false;
+                                    firstClicked.isExist=false;
                                     secondClicked.button.setVisibility(Button.INVISIBLE);
-                                    secondClicked.exist=false;
+                                    secondClicked.isExist=false;
                                 }else{
                                     firstClicked.button.setEnabled(true);
                                     secondClicked.button.setEnabled(true);
@@ -86,9 +103,13 @@ public abstract class LevelActivity extends GlobalSettings{
                 });
             }
         }
-
-
+        deal();
     };
+    protected void deal(){
+        SecureRandom SR=new SecureRandom(ByteBuffer.allocate(4).putInt((int) (System.currentTimeMillis() / 1000)).array());
+        OriginPair firstPair=new OriginPair(SR.nextInt(totalRow)+1,SR.nextInt(totalColumn)+1),secondPair=new OriginPair(SR.nextInt(totalRow)+1,SR.nextInt(totalColumn)+1);
+//        firstPair.value=ConnectibleNumbers.get(SR.nextInt(ConnectibleNumbers.size()));
+    }
     protected void redeal(){
 
     }

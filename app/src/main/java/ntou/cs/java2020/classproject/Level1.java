@@ -6,6 +6,9 @@ import android.os.SystemClock;
 import android.view.View;
 import android.widget.*;
 
+import java.nio.ByteBuffer;
+import java.security.SecureRandom;
+
 public class Level1 extends LevelActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,5 +48,16 @@ public class Level1 extends LevelActivity {
     protected boolean connectionAnalysis(){
         System.out.println("s");
         return false;
+    }
+    @Override
+    protected void deal(){
+        for(int firstCounter=1;firstCounter<=10;firstCounter++){
+            for(int secondCounter=1;secondCounter<=10;secondCounter++){
+                if(firstCounter*secondCounter==10){
+                    for()
+                }
+            }
+        }
+
     }
 }
