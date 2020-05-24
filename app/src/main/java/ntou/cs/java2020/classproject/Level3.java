@@ -35,12 +35,7 @@ public class Level3 extends LevelActivity {
                 finish();
             }
         });
-        gamePrepare();
+        //gamePrepare();
     }
-    @Override
-    protected boolean gamePrepare(){
-        chronometer=findViewById(R.id.chronometerTimer);
-        timerControl(State.start);
-        return true;
-    }
+
 }

@@ -34,13 +34,11 @@ public class Level1 extends LevelActivity {
                 finish();
             }
         });
-        gamePrepare();
+        gamePrepare(6,3);
     }
 
     @Override
-    protected boolean gamePrepare(){
-        chronometer=findViewById(R.id.chronometerTimer);
-        timerControl(State.start);
-        return true;
+    protected void gamePrepare(int row,int column){
+        super.gamePrepare(row,column);
     }
 }

@@ -34,11 +34,7 @@ public class Level2 extends LevelActivity {
                 finish();
             }
         });
-        gamePrepare();
+        //gamePrepare();
     }
-    protected boolean gamePrepare(){
-        chronometer=findViewById(R.id.chronometerTimer);
-        timerControl(State.start);
-        return true;
-    }
+
 }

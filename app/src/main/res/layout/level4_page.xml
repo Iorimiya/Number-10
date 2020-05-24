@@ -72,36 +72,6 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/block000"
-                android:layout_width="60dp"
-                android:layout_height="60dp" />
-
-            <Button
-                android:id="@+id/block001"
-                android:layout_width="60dp"
-                android:layout_height="60dp" />
-
-            <Button
-                android:id="@+id/block002"
-                android:layout_width="60dp"
-                android:layout_height="60dp" />
-
-            <Button
-                android:id="@+id/block003"
-                android:layout_width="60dp"
-                android:layout_height="60dp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/block010"
-                android:layout_width="60dp"
-                android:layout_height="60dp" />
-
-            <Button
                 android:id="@+id/block011"
                 android:layout_width="60dp"
                 android:layout_height="60dp" />
@@ -115,16 +85,16 @@
                 android:id="@+id/block013"
                 android:layout_width="60dp"
                 android:layout_height="60dp" />
+
+            <Button
+                android:id="@+id/block014"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/block020"
-                android:layout_width="60dp"
-                android:layout_height="60dp" />
 
             <Button
                 android:id="@+id/block021"
@@ -140,16 +110,16 @@
                 android:id="@+id/block023"
                 android:layout_width="60dp"
                 android:layout_height="60dp" />
+
+            <Button
+                android:id="@+id/block024"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/block030"
-                android:layout_width="60dp"
-                android:layout_height="60dp" />
 
             <Button
                 android:id="@+id/block031"
@@ -165,16 +135,16 @@
                 android:id="@+id/block033"
                 android:layout_width="60dp"
                 android:layout_height="60dp" />
+
+            <Button
+                android:id="@+id/block034"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/block040"
-                android:layout_width="60dp"
-                android:layout_height="60dp" />
 
             <Button
                 android:id="@+id/block041"
@@ -187,20 +157,19 @@
                 android:layout_height="60dp" />
 
             <Button
-                android:id="@+id/block43"
+                android:id="@+id/block043"
                 android:layout_width="60dp"
                 android:layout_height="60dp" />
 
+            <Button
+                android:id="@+id/block044"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/block050"
-                android:layout_width="60dp"
-                android:layout_height="60dp" />
 
             <Button
                 android:id="@+id/block051"
@@ -216,16 +185,17 @@
                 android:id="@+id/block053"
                 android:layout_width="60dp"
                 android:layout_height="60dp" />
+
+            <Button
+                android:id="@+id/block43"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/block060"
-                android:layout_width="60dp"
-                android:layout_height="60dp" />
 
             <Button
                 android:id="@+id/block061"
@@ -241,16 +211,16 @@
                 android:id="@+id/block063"
                 android:layout_width="60dp"
                 android:layout_height="60dp" />
+
+            <Button
+                android:id="@+id/block064"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/block070"
-                android:layout_width="60dp"
-                android:layout_height="60dp" />
 
             <Button
                 android:id="@+id/block071"
@@ -264,6 +234,36 @@
 
             <Button
                 android:id="@+id/block073"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+
+            <Button
+                android:id="@+id/block074"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/block081"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+
+            <Button
+                android:id="@+id/block082"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+
+            <Button
+                android:id="@+id/block083"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+
+            <Button
+                android:id="@+id/block084"
                 android:layout_width="60dp"
                 android:layout_height="60dp" />
         </TableRow>
