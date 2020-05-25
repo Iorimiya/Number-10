@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Number 10</string>
+    <string name="project_name">Java程式設計專案</string>
+    <string name="title_newGameButtonText">新遊戲</string>
+    <string name="title_levelSelectionButtonText">關卡選擇</string>
+    <string name="title_ruleButtonText">規則</string>
+    <string name="title_settingButtonText">設定</string>
+    <string name="setting_titleText">設定</string>
+    <string name="setting_musicText">音樂:</string>
+    <string name="setting_finishedLevelText">最高可遊玩關卡設置:\n( 開  發  者  用 )</string>
+    <string name="global_backButtonText">回選單</string>
+    <string name="global_redealButtonText">重發牌</string>
+    <string name="global_timerText">時間：</string>
+    <string name="global_scoreText">分數:</string>
+    <string name="global_nextButtonText">下一關</string>
+    <string name="game_scoreDisplayMessage">本關得分</string>
+</resources>

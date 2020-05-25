@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Number 10</string>
+    <string name="project_name">ClassProjectOfJavaClass</string>
+    <string name="title_newGameButtonText">New Game</string>
+    <string name="title_levelSelectionButtonText">Level Selection</string>
+    <string name="title_ruleButtonText">Rule</string>
+    <string name="title_settingButtonText">Setting</string>
+    <string name="setting_titleText">Settings</string>
+    <string name="setting_musicText">Music:</string>
+    <string name="setting_finishedLevelText">Highest Playable Level:\n( for developer )</string>
+    <string name="global_backButtonText">Back</string>
+    <string name="global_redealButtonText">Redeal</string>
+    <string name="global_timerText">Timer:</string>
+    <string name="global_scoreText">Score:</string>
+    <string name="global_nextButtonText">Next Level</string>
+    <string name="game_scoreDisplayMessage">Your Score at this level</string>
+</resources>
