@@ -10,16 +10,25 @@ import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
 
 public class LevelWin extends GlobalSettings {
+
+    private int nextLevel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.level_win_page);
-        final int nextLevel=this.getIntent().getIntExtra("NextLevel",0);
+//        連結頁面
+//        Linking page object
+        nextLevel=this.getIntent().getIntExtra("NextLevel",0);
+//        取得下一關資料
+//        get the next level data
         try {
             ((GifImageView)findViewById(R.id.gifImage)).setImageDrawable(new GifDrawable(getResources(), R.drawable.congradulations_page_background ));
         } catch (IOException e) {
             e.printStackTrace();
         }
+//        設定背景gif
+//        set the background image(gif)
         findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -27,7 +36,9 @@ public class LevelWin extends GlobalSettings {
                 finish();
             }
         });
-        findViewById(R.id.nextLevelButton).setOnClickListener(new NextLevelAnalysisListener(nextLevel) {
+//        回選單
+//        back to the title
+        findViewById(R.id.nextLevelButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch(nextLevel){
@@ -50,5 +61,7 @@ public class LevelWin extends GlobalSettings {
                 finish();
             }
         });
+//        跳至下一關
+//        goto next level
     }
 }

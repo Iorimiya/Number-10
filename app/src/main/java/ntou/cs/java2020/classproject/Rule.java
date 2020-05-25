@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 public class Rule extends GlobalSettings{
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,5 +18,7 @@ public class Rule extends GlobalSettings{
                 finish();
             }
         });
+//        回選單
+//        back to the title
     }
 }

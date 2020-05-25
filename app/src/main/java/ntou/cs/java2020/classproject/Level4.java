@@ -12,13 +12,17 @@ public class Level4 extends LevelActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.level4_page);
-        ((Switch)findViewById(R.id.skipSwitch)).setChecked(GlobalSettings.skipControl);
-        ((Switch)findViewById(R.id.skipSwitch)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                GlobalSettings.skipControl = isChecked;
-            }
-        });
+//        連結頁面
+//        Linking page object
+        pagePrepare();
+//        頁面準備
+        gamePrepare(8,4);
+//        遊戲準備
+    }
+
+    @Override
+    protected void pagePrepare(){
+        super.pagePrepare();
         findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,13 +35,18 @@ public class Level4 extends LevelActivity {
                     }
                     startActivity(intent);
                 }
+//                跳至下一關
+//                skip to next level
                 else
                     startActivity(new Intent(Level4.this, Title.class));
+//                回選單
+//                back to the title
                 finish();
             }
         });
-        gamePrepare(8,4);
+//        設定回選單按鈕功能
     }
+
     @Override
     protected void deal(){
         for(int firstCounter=1;firstCounter<=10;firstCounter++)
@@ -56,6 +65,8 @@ public class Level4 extends LevelActivity {
                         ConnectibleNumbers.add(temp);
                     }
                 }
+//        創造符合條件的數字清單
+//        create the pair list of correct numbers
         super.deal();
     }
 }

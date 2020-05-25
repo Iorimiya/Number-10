@@ -5,6 +5,8 @@ import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.nio.ByteBuffer;
@@ -37,10 +39,19 @@ public abstract class LevelActivity extends GlobalSettings{
     protected enum ClickedState{none,once}
 //    分辨沒有按鈕被按下、按下第一個按鈕和按下第二個按鈕的FSM指示列舉
 
-    //method
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); }
+
+    protected void pagePrepare(){
+        ((Switch)findViewById(R.id.skipSwitch)).setChecked(GlobalSettings.skipControl);
+        ((Switch)findViewById(R.id.skipSwitch)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                GlobalSettings.skipControl = isChecked;
+            }
+        });
+//        設定跳關開關狀態&&添加跳關開關CheckedListener
+//        setting the skip switch's state and checked listener
     }
 
     protected void gamePrepare(int row,int column){
@@ -127,15 +138,17 @@ public abstract class LevelActivity extends GlobalSettings{
             blockSimulatorMap.get(secondPair.row).get(secondPair.column).hasValue=true;
             hasValueCounter+=2;
         }
-
     }
+
     protected void redeal(){
 
     }
+
     protected boolean connectionAnalysis(){
         System.out.println("f");
         return false;
     }
+
     protected void timerControl(TimerState control){
         if(control==TimerState.start) {
             chronometer.setBase(SystemClock.elapsedRealtime());

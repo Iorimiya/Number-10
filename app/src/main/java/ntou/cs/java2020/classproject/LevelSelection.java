@@ -4,13 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import java.util.Objects;
-
 public class LevelSelection extends GlobalSettings {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.level_selection_page);
+//        連結頁面
+//        Linking page object
         findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -18,6 +19,8 @@ public class LevelSelection extends GlobalSettings {
                 finish();
             }
         });
+//        回選單
+//        back to the title
         findViewById(R.id.level1Button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -25,6 +28,8 @@ public class LevelSelection extends GlobalSettings {
                 finish();
             }
         });
+//        第一關
+//        goto level 1
         findViewById(R.id.level2Button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,6 +37,8 @@ public class LevelSelection extends GlobalSettings {
                 finish();
             }
         });
+//        第二關
+//        goto level 2
         findViewById(R.id.level3Button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,6 +46,8 @@ public class LevelSelection extends GlobalSettings {
                 finish();
             }
         });
+//        第三關
+//        goto level 3
         findViewById(R.id.level4Button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +55,8 @@ public class LevelSelection extends GlobalSettings {
                 finish();
             }
         });
+//        第四關
+//        goto level 4
         findViewById(R.id.level5Button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,9 +64,13 @@ public class LevelSelection extends GlobalSettings {
                 finish();
             }
         });
-        if((GlobalSettings.lastOpenedLevel = Integer.parseInt(Objects.requireNonNull(getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).getString("hasOpenedLevel", "0"))))==0)
+//        第五關
+//        goto level 5
+        if(GlobalSettings.lastOpenedLevel==0)
             findViewById(getResources().getIdentifier("level1Button", "id", getPackageName())).setEnabled(true);
         else for (int counter = 1; counter <= GlobalSettings.lastOpenedLevel; counter++)
             findViewById(getResources().getIdentifier("level" + counter + "Button", "id", getPackageName())).setEnabled(true);
+//        視選項決定開啟那些關卡
+//        open the level due to the last Opened Level
     }
 }
