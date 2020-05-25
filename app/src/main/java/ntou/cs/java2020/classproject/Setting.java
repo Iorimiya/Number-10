@@ -42,22 +42,20 @@ public class Setting extends GlobalSettings {
             }
         });
 
-        for(int counter=1;counter<=5;counter++){
-            findViewById(getResources().getIdentifier("FinishedLV"+counter+"Button", "id", getPackageName())).setOnClickListener(new View.OnClickListener() {
+        for(int counter=1;counter<=5;counter++)
+            findViewById(getResources().getIdentifier("FinishedLV" + counter + "Button", "id", getPackageName())).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    GlobalSettings.lastOpenedLevel=Integer.parseInt(String.valueOf(v.getResources().getResourceName(v.getId()).charAt(43)));
-                    getSharedPreferences("NumberTenSaveData",MODE_PRIVATE).edit().putString("hasOpenedLevel" ,Integer.toString(GlobalSettings.lastOpenedLevel)).apply();
+                    GlobalSettings.lastOpenedLevel = Integer.parseInt(String.valueOf(v.getResources().getResourceName(v.getId()).charAt(43)));
+                    getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putString("hasOpenedLevel", Integer.toString(GlobalSettings.lastOpenedLevel)).apply();
                     findViewById(R.id.FinishedResetButton).setEnabled(true);
-                    for(int counter=1;counter<=5;counter++){
-                        if(GlobalSettings.lastOpenedLevel!=counter)
-                            findViewById(getResources().getIdentifier("FinishedLV"+counter+"Button", "id", getPackageName())).setEnabled(true);
+                    for (int counter = 1; counter <= 5; counter++)
+                        if (GlobalSettings.lastOpenedLevel != counter)
+                            findViewById(getResources().getIdentifier("FinishedLV" + counter + "Button", "id", getPackageName())).setEnabled(true);
                         else
-                            findViewById(getResources().getIdentifier("FinishedLV"+counter+"Button", "id", getPackageName())).setEnabled(false);
-                    }
+                            findViewById(getResources().getIdentifier("FinishedLV" + counter + "Button", "id", getPackageName())).setEnabled(false);
                 }
             });
-        }
 
     }
 }

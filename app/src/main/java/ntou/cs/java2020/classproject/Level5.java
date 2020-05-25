@@ -33,22 +33,22 @@ public class Level5 extends LevelActivity {
     }
     @Override
     protected void deal(){
-        for(int firstCounter=1;firstCounter<=10;firstCounter++){
-            for(int secondCounter=1;secondCounter<=10;secondCounter++){
-                if(7-firstCounter+2*secondCounter==10){
-                    boolean duplication=false;
-                    for(ArrayList<Integer> pair:ConnectibleNumbers) {
-                        if ((firstCounter == pair.get(0) && secondCounter == pair.get(1)) || (firstCounter == pair.get(1) && secondCounter == pair.get(0))) duplication=true;
-                    }
-                    if(!duplication) {
+        for(int firstCounter=1;firstCounter<=10;firstCounter++)
+            for (int secondCounter = 1; secondCounter <= 10; secondCounter++)
+                if (((7 - firstCounter) + 2 * secondCounter) == 10) {
+                    boolean duplication = false;
+                    for (ArrayList<Integer> pair : ConnectibleNumbers)
+                        if ((firstCounter == pair.get(0) && secondCounter == pair.get(1)) || (firstCounter == pair.get(1) && secondCounter == pair.get(0))) {
+                            duplication = true;
+                            break;
+                        }
+                    if (!duplication) {
                         ArrayList<Integer> temp = new ArrayList<>();
                         temp.add(firstCounter);
                         temp.add(secondCounter);
                         ConnectibleNumbers.add(temp);
                     }
                 }
-            }
-        }
         super.deal();
     }
 }

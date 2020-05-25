@@ -53,13 +53,9 @@ public class LevelSelection extends GlobalSettings {
                 finish();
             }
         });
-        if((GlobalSettings.lastOpenedLevel = Integer.parseInt(Objects.requireNonNull(getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).getString("hasOpenedLevel", "0"))))==0) {
+        if((GlobalSettings.lastOpenedLevel = Integer.parseInt(Objects.requireNonNull(getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).getString("hasOpenedLevel", "0"))))==0)
             findViewById(getResources().getIdentifier("level1Button", "id", getPackageName())).setEnabled(true);
-        }
-        else{
-            for (int counter = 1; counter <= GlobalSettings.lastOpenedLevel; counter++) {
-                findViewById(getResources().getIdentifier("level" + counter + "Button", "id", getPackageName())).setEnabled(true);
-            }
-        }
+        else for (int counter = 1; counter <= GlobalSettings.lastOpenedLevel; counter++)
+            findViewById(getResources().getIdentifier("level" + counter + "Button", "id", getPackageName())).setEnabled(true);
     }
 }

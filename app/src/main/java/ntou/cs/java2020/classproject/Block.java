@@ -4,8 +4,8 @@ import android.widget.Button;
 
 public class Block extends OriginPair {
 
-    public Button button=null;
-    public boolean isExist=false,hasNumber=false;
+    public Button button;
+    public boolean isExist=false,hasValue=false;
     Block(Button button,int row,int column){
         super(row,column);
         this.button=button;

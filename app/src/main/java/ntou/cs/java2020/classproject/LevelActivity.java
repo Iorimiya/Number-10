@@ -32,9 +32,9 @@ public abstract class LevelActivity extends GlobalSettings{
     //game parameter
     protected int score;
 //    分數
-    protected enum TimerState {start,end;}
+    protected enum TimerState {start,end}
 //    分辨計時參數為開始或結束的列舉
-    protected enum ClickedState{none,once;}
+    protected enum ClickedState{none,once}
 //    分辨沒有按鈕被按下、按下第一個按鈕和按下第二個按鈕的FSM指示列舉
 
     //method
@@ -53,10 +53,11 @@ public abstract class LevelActivity extends GlobalSettings{
         blockSimulatorMap=new ArrayList<>();
         for(int rowCounter=0;rowCounter<totalRow+2;rowCounter++){
             ArrayList<Block> rowTemp=new ArrayList<>();
-            for(int columnCounter=0;columnCounter<totalColumn+2;columnCounter++){
-                if(rowCounter==0||rowCounter==totalRow+1||columnCounter==0||columnCounter==totalColumn+1) rowTemp.add(new Block(null,rowCounter,columnCounter));
-                else rowTemp.add(new Block((Button)findViewById(getResources().getIdentifier(String.format("block%02d%d",rowCounter,columnCounter),"id",getPackageName())),rowCounter,columnCounter));
-            }
+            for(int columnCounter=0;columnCounter<totalColumn+2;columnCounter++)
+                if (rowCounter == 0 || rowCounter == totalRow + 1 || columnCounter == 0 || columnCounter == totalColumn + 1)
+                    rowTemp.add(new Block(null, rowCounter, columnCounter));
+                else
+                    rowTemp.add(new Block((Button) findViewById(getResources().getIdentifier(String.format("block%02d%d", rowCounter, columnCounter), "id", getPackageName())), rowCounter, columnCounter));
             blockSimulatorMap.add(rowTemp);
         }
 
@@ -66,35 +67,35 @@ public abstract class LevelActivity extends GlobalSettings{
         timerControl(TimerState.start);
 
         //Add Click Listener
-        for(int rowCounter=1;rowCounter<=totalRow;rowCounter++){
-            for(int columnCounter=1;columnCounter<=totalColumn;columnCounter++){
-                final int finalRowCounter = rowCounter,finalColumnCounter=columnCounter;
+        for(int rowCounter=1;rowCounter<=totalRow;rowCounter++)
+            for (int columnCounter = 1; columnCounter <= totalColumn; columnCounter++) {
+                final int finalRowCounter = rowCounter, finalColumnCounter = columnCounter;
                 blockSimulatorMap.get(rowCounter).get(columnCounter).button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        switch (nowClickedState){
+                        switch (nowClickedState) {
 //                            還沒有任何按鈕被按時：設定狀態為按下一顆按鈕，將被按下的按鈕連結到firstClicked上，讓該按鈕失效(避免重複按下+提示使用者被按下的按鈕)。
                             case none:
-                                nowClickedState=ClickedState.once;
-                                firstClicked=blockSimulatorMap.get(finalRowCounter).get(finalColumnCounter);
+                                nowClickedState = ClickedState.once;
+                                firstClicked = blockSimulatorMap.get(finalRowCounter).get(finalColumnCounter);
                                 firstClicked.button.setEnabled(false);
                                 break;
 //                            按下一顆：如果連結合規->讓該按鈕消失，else：回復原狀
                             case once:
-                                nowClickedState=ClickedState.none;
-                                secondClicked=blockSimulatorMap.get(finalRowCounter).get(finalColumnCounter);
+                                nowClickedState = ClickedState.none;
+                                secondClicked = blockSimulatorMap.get(finalRowCounter).get(finalColumnCounter);
                                 secondClicked.button.setEnabled(false);
-                                if(connectionAnalysis()){
+                                if (connectionAnalysis()) {
                                     firstClicked.button.setVisibility(Button.INVISIBLE);
-                                    firstClicked.isExist=false;
+                                    firstClicked.isExist = false;
                                     secondClicked.button.setVisibility(Button.INVISIBLE);
-                                    secondClicked.isExist=false;
-                                }else{
+                                    secondClicked.isExist = false;
+                                } else {
                                     firstClicked.button.setEnabled(true);
                                     secondClicked.button.setEnabled(true);
                                 }
-                                firstClicked=null;
-                                secondClicked=null;
+                                firstClicked = null;
+                                secondClicked = null;
                                 break;
                             default:
                                 throw new IllegalStateException("Unexpected value: " + nowClickedState);
@@ -102,25 +103,29 @@ public abstract class LevelActivity extends GlobalSettings{
                     }
                 });
             }
-        }
         deal();
-    };
+    }
+
     protected void deal(){
         SecureRandom SR=new SecureRandom(ByteBuffer.allocate(4).putInt((int) (System.currentTimeMillis() / 1000)).array());
+        int needValueBlocksNumber=0;
+        for(ArrayList<Block> RowIterator:blockSimulatorMap)
+            for (Block columnIterator : RowIterator)
+                if (columnIterator.isExist) needValueBlocksNumber++;
 
-        for(int hasNumberCounter=0;hasNumberCounter<totalColumn*totalRow;){
+        for(int hasValueCounter=0;hasValueCounter<needValueBlocksNumber;){
             OriginPair firstPair=new OriginPair(SR.nextInt(totalRow)+1,SR.nextInt(totalColumn)+1),secondPair=new OriginPair(SR.nextInt(totalRow)+1,SR.nextInt(totalColumn)+1);
-            if((firstPair.row==secondPair.row&&firstPair.column==secondPair.column)||blockSimulatorMap.get(firstPair.row).get(firstPair.column).hasNumber||blockSimulatorMap.get(secondPair.row).get(secondPair.column).hasNumber) continue;
+            if((firstPair.row==secondPair.row&&firstPair.column==secondPair.column)||blockSimulatorMap.get(firstPair.row).get(firstPair.column).hasValue||blockSimulatorMap.get(secondPair.row).get(secondPair.column).hasValue||!blockSimulatorMap.get(firstPair.row).get(firstPair.column).isExist||!blockSimulatorMap.get(secondPair.row).get(secondPair.column).isExist) continue;
             int tempSR=SR.nextInt(ConnectibleNumbers.size());
             firstPair.value=ConnectibleNumbers.get(tempSR).get(0);
             secondPair.value=ConnectibleNumbers.get(tempSR).get(1);
             blockSimulatorMap.get(firstPair.row).get(firstPair.column).value=firstPair.value;
             blockSimulatorMap.get(firstPair.row).get(firstPair.column).button.setText(String.valueOf(firstPair.value));
-            blockSimulatorMap.get(firstPair.row).get(firstPair.column).hasNumber=true;
+            blockSimulatorMap.get(firstPair.row).get(firstPair.column).hasValue=true;
             blockSimulatorMap.get(secondPair.row).get(secondPair.column).value=secondPair.value;
             blockSimulatorMap.get(secondPair.row).get(secondPair.column).button.setText(String.valueOf(secondPair.value));
-            blockSimulatorMap.get(secondPair.row).get(secondPair.column).hasNumber=true;
-            hasNumberCounter+=2;
+            blockSimulatorMap.get(secondPair.row).get(secondPair.column).hasValue=true;
+            hasValueCounter+=2;
         }
 
     }
