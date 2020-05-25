@@ -25,6 +25,7 @@
         <activity android:name=".Congratulations" />
         <activity android:name=".Setting" />
         <activity android:name=".LevelWin" />
+
     </application>
 
 </manifest>
