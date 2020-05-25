@@ -2,12 +2,14 @@ package ntou.cs.java2020.classproject;
 
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.nio.ByteBuffer;
 import java.security.SecureRandom;
@@ -33,8 +35,8 @@ public abstract class LevelActivity extends GlobalSettings{
 //    可以被消除的整數清單
 
     //game parameter
-    protected int score;
-//    分數
+    protected int score=0,existBlockCounter,passedTime,bonusTime;
+//    分數、剩餘Block數、經過時間、獎勵時間
     protected enum TimerState {start,end}
 //    分辨計時參數為開始或結束的列舉
     protected enum ClickedState{none,once}
@@ -56,6 +58,11 @@ public abstract class LevelActivity extends GlobalSettings{
         findViewById(R.id.redealButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(nowClickedState==ClickedState.once){
+                    nowClickedState=ClickedState.none;
+                    firstClicked.setClickable(true);
+                    firstClicked=null;
+                }
                 deal();
             }
         });
@@ -67,6 +74,7 @@ public abstract class LevelActivity extends GlobalSettings{
         //link Object to Variable
         totalRow=row;
         totalColumn=column;
+        existBlockCounter=totalRow*totalColumn;
         nowClickedState=ClickedState.none;
 
         blockSimulatorMap=new ArrayList<>();
@@ -82,7 +90,8 @@ public abstract class LevelActivity extends GlobalSettings{
 //        最外圈以外的Block連結到按鈕
 
         chronometer=findViewById(R.id.chronometerTimer);
-        scoreDisplayArea=findViewById(R.id.scoreText);
+        scoreDisplayArea=findViewById(R.id.scoreContent);
+        scoreDisplayArea.setText(String.valueOf(score));
         //Start Timer
         timerControl(TimerState.start);
 
@@ -98,21 +107,25 @@ public abstract class LevelActivity extends GlobalSettings{
                             case none:
                                 nowClickedState = ClickedState.once;
                                 firstClicked = blockSimulatorMap.get(finalRowCounter).get(finalColumnCounter);
-                                firstClicked.setEnabled(false);
+                                firstClicked.setClickable(false);
                                 break;
 //                            按下一顆：如果連結合規->讓該按鈕消失，else：回復原狀
                             case once:
                                 nowClickedState = ClickedState.none;
                                 secondClicked = blockSimulatorMap.get(finalRowCounter).get(finalColumnCounter);
-                                secondClicked.setEnabled(false);
+                                secondClicked.setClickable(false);
                                 if (connectionAnalysis()) {
                                     firstClicked.setExist(false);
                                     secondClicked.setExist(false);
-                                    firstClicked.updateButton();
-                                    secondClicked.updateButton();
+                                    score+=20;
+                                    scoreDisplayArea.setText(String.valueOf(score));
+                                    existBlockCounter-=2;
+                                    if(existBlockCounter==0){
+                                        finishProcess();
+                                    }
                                 } else {
-                                    firstClicked.setEnabled(true);
-                                    secondClicked.setEnabled(true);
+                                    firstClicked.setClickable(true);
+                                    secondClicked.setClickable(true);
                                 }
                                 firstClicked = null;
                                 secondClicked = null;
@@ -126,6 +139,16 @@ public abstract class LevelActivity extends GlobalSettings{
         deal();
     }
 
+    protected void timerControl(TimerState control){
+        if(control==TimerState.start) {
+            chronometer.setBase(SystemClock.elapsedRealtime());
+            chronometer.start();
+        }else if(control==TimerState.end){
+            chronometer.stop();
+        }
+    }
+//    開啟/關閉計時器
+
     protected void deal(){
         SecureRandom SR=new SecureRandom(ByteBuffer.allocate(4).putInt((int) (System.currentTimeMillis() / 1000)).array());
         int needValueBlocksNumber=0;
@@ -138,26 +161,65 @@ public abstract class LevelActivity extends GlobalSettings{
             if((firstPosition.getRow()==secondPosition.getRow()&&firstPosition.getColumn()==secondPosition.getColumn())||blockSimulatorMap.get(firstPosition.getRow()).get(firstPosition.getColumn()).isHasValue()||blockSimulatorMap.get(secondPosition.getRow()).get(secondPosition.getColumn()).isHasValue()||!blockSimulatorMap.get(firstPosition.getRow()).get(firstPosition.getColumn()).isExist()||!blockSimulatorMap.get(secondPosition.getRow()).get(secondPosition.getColumn()).isExist()) continue;
             int randomNumberIndex=SR.nextInt(ConnectibleNumbers.size());
             blockSimulatorMap.get(firstPosition.getRow()).get(firstPosition.getColumn()).setNumber(ConnectibleNumbers.get(randomNumberIndex).get(0));
-            blockSimulatorMap.get(firstPosition.getRow()).get(firstPosition.getColumn()).updateButton();
             blockSimulatorMap.get(secondPosition.getRow()).get(secondPosition.getColumn()).setNumber(ConnectibleNumbers.get(randomNumberIndex).get(1));
-            blockSimulatorMap.get(secondPosition.getRow()).get(secondPosition.getColumn()).updateButton();
             hasValueCounter+=2;
         }
 //        給數字
     }
 
     protected boolean connectionAnalysis(){
-        System.out.println("f");
+        if(nullFoldConnection(firstClicked.getPosition(),secondClicked.getPosition())) return true;
+        else if(singleFoldConnection(firstClicked.getPosition(),secondClicked.getPosition())) return true;
+        else return doubleFoldConnection(firstClicked.getPosition(),secondClicked.getPosition());
+    }
+
+    //無折
+    protected boolean nullFoldConnection(Position A,Position B){
+        if(A.getRow()==B.getRow()){
+            for(int counter=Math.min(A.getColumn(),B.getColumn())+1;counter<Math.max(A.getColumn(),B.getColumn());counter++){
+                if(blockSimulatorMap.get(A.getRow()).get(counter).isExist())return false;
+            }
+            return true;
+        }
+        if(A.getColumn()==B.getColumn()){
+            for(int counter=Math.min(A.getRow(),B.getRow())+1;counter<Math.max(A.getRow(),B.getRow());counter++){
+                if(blockSimulatorMap.get(counter).get(A.getColumn()).isExist())return false;
+            }
+            return true;
+        }
         return false;
     }
 
-    protected void timerControl(TimerState control){
-        if(control==TimerState.start) {
-            chronometer.setBase(SystemClock.elapsedRealtime());
-            chronometer.start();
-        }else if(control==TimerState.end){
-            chronometer.stop();
-        }
+    //一折
+    protected  boolean singleFoldConnection(Position A,Position B){
+        if(A.getRow()==B.getRow()||A.getColumn()==B.getColumn()) return false;
+        return (nullFoldConnection(A, new Position(A.getRow(), B.getColumn())) && nullFoldConnection(B, new Position(A.getRow(), B.getColumn())) && !blockSimulatorMap.get(A.getRow()).get(B.getColumn()).isExist()) || (nullFoldConnection(A, new Position(B.getRow(), A.getColumn())) && nullFoldConnection(B, new Position(B.getRow(), A.getColumn())) && !blockSimulatorMap.get(B.getRow()).get(A.getColumn()).isExist());
     }
-//    開啟/關閉音樂
+
+    //二折
+    protected  boolean doubleFoldConnection(Position A,Position B){
+        for(int leftIterator=A.getColumn()-1;leftIterator>=0&&!blockSimulatorMap.get(A.getRow()).get(leftIterator).isExist();leftIterator--){
+            if(singleFoldConnection(B,new Position(A.getRow(),leftIterator)))return true;
+        }
+        for(int rightIterator=A.getColumn()+1;rightIterator<totalColumn+2&&!blockSimulatorMap.get(A.getRow()).get(rightIterator).isExist();rightIterator++){
+            if(singleFoldConnection(B,new Position(A.getRow(),rightIterator)))return true;
+        }
+        for(int upIterator=A.getRow()-1;upIterator>=0&&!blockSimulatorMap.get(upIterator).get(A.getColumn()).isExist();upIterator--){
+            if(singleFoldConnection(B,new Position(upIterator,A.getColumn())))return true;
+        }
+        for(int downIterator=A.getRow()+1;downIterator<totalRow+2&&!blockSimulatorMap.get(downIterator).get(A.getColumn()).isExist();downIterator++){
+            if(singleFoldConnection(B,new Position(downIterator,A.getColumn())))return true;
+        }
+        return false;
+    }
+
+    protected void finishProcess(){
+        timerControl(TimerState.end);
+        //Log.d("Number10",chronometer.getContentDescription().toString());
+        String[] timerString=chronometer.getText().toString().split(":");
+        passedTime=Integer.parseInt(timerString[timerString.length-1])+Integer.parseInt(timerString[timerString.length-2])*60;
+        if(timerString.length==3) passedTime+=Integer.parseInt(timerString[0])*3600;
+        if(passedTime<=bonusTime) score=(int)(score*1.5);
+        Toast.makeText(getApplicationContext(),String.format("%s：%d",getString(R.string.game_scoreDisplayMessage),score),Toast.LENGTH_SHORT).show();
+    }
 }

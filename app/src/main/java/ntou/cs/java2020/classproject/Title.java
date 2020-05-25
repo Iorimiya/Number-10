@@ -2,6 +2,7 @@ package ntou.cs.java2020.classproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.gsm.GsmCellLocation;
 import android.view.View;
 
 import java.util.Objects;
@@ -16,6 +17,9 @@ public class Title extends GlobalSettings {
 //        link page object
         GlobalSettings.lastOpenedLevel = getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).getInt("hasOpenedLevel", 0);
         GlobalSettings.musicControl=getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).getBoolean("musicControl", true);
+        if(GlobalSettings.scoreList.size()==0)
+            for(int counter=0;counter<5;counter++)
+                GlobalSettings.scoreList.add(getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).getInt(String.format("level%dHighestScore", counter + 1), 0));
 //        從Shared Preferences取得相關資料
 //        get Data from Shared References
         if(GlobalSettings.mediaPlayer==null){

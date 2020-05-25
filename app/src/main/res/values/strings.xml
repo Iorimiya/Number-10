@@ -13,4 +13,5 @@
     <string name="global_timerText">Timer:</string>
     <string name="global_scoreText">Score:</string>
     <string name="global_nextButtonText">Next Level</string>
+    <string name="game_scoreDisplayMessage">Your Score at this level</string>
 </resources>

@@ -44,6 +44,7 @@
         android:fontFamily="casual"
         android:gravity="center"
         android:textColor="@color/yellow"
+        android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/scoreText" />
 

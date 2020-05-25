@@ -20,12 +20,12 @@ public class Level5 extends LevelActivity {
     }
 
     @Override
-    protected void pagePrepare(){
+    protected void pagePrepare() {
         super.pagePrepare();
         findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(GlobalSettings.skipControl)
+                if (GlobalSettings.skipControl)
                     startActivity(new Intent(Level5.this, Congratulations.class));
 //                跳至Congratulations頁面
 //                skip to congratulations page
@@ -43,7 +43,7 @@ public class Level5 extends LevelActivity {
     protected void deal(){
         for(int firstCounter=1;firstCounter<=10;firstCounter++)
             for (int secondCounter = 1; secondCounter <= 10; secondCounter++)
-                if (((7 - firstCounter) + 2 * secondCounter) == 10) {
+                if ((7 - firstCounter) + 2 * secondCounter == 10) {
                     boolean duplication = false;
                     for (ArrayList<Integer> pair : ConnectibleNumbers)
                         if ((firstCounter == pair.get(0) && secondCounter == pair.get(1)) || (firstCounter == pair.get(1) && secondCounter == pair.get(0))) {
@@ -60,5 +60,23 @@ public class Level5 extends LevelActivity {
 //        創造符合條件的數字清單
 //        create the pair list of correct numbers
         super.deal();
+    }
+
+    @Override
+    protected boolean connectionAnalysis(){
+        if((7 - firstClicked.getNumber()) + 2 * secondClicked.getNumber()!=10 && (7 - secondClicked.getNumber()) + 2 * firstClicked.getNumber()!=10)
+            return false;
+        return super.connectionAnalysis();
+    }
+
+    @Override
+    protected void finishProcess(){
+        bonusTime=90;
+        super.finishProcess();
+        if(score>GlobalSettings.scoreList.get(4)) {
+            GlobalSettings.scoreList.set(4, score);
+            getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putInt("level1HighestScore", GlobalSettings.scoreList.get(4)).apply();
+        }
+        startActivity(new Intent(Level5.this, Congratulations.class));
     }
 }

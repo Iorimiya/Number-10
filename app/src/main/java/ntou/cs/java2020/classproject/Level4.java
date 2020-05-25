@@ -30,7 +30,7 @@ public class Level4 extends LevelActivity {
                     intent.putExtra("NextLevel",5);
                     if(GlobalSettings.lastOpenedLevel<5) {
                         GlobalSettings.lastOpenedLevel = 5;
-                        getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putString("hasOpenedLevel", Integer.toString(GlobalSettings.lastOpenedLevel)).apply();
+                        getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putInt("hasOpenedLevel", GlobalSettings.lastOpenedLevel).apply();
                     }
                     startActivity(intent);
                 }
@@ -67,5 +67,29 @@ public class Level4 extends LevelActivity {
 //        創造符合條件的數字清單
 //        create the pair list of correct numbers
         super.deal();
+    }
+
+    @Override
+    protected boolean connectionAnalysis(){
+        if(2 * (5 - firstClicked.getNumber()) + secondClicked.getNumber()!=10 && 2 * (5 - secondClicked.getNumber()) + firstClicked.getNumber()!=10 )
+            return false;
+        return super.connectionAnalysis();
+    }
+
+    @Override
+    protected void finishProcess(){
+        bonusTime=60;
+        super.finishProcess();
+        if(score>GlobalSettings.scoreList.get(3)) {
+            GlobalSettings.scoreList.set(3, score);
+            getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putInt("level1HighestScore", GlobalSettings.scoreList.get(3)).apply();
+        }
+        Intent intent=new Intent(Level4.this, LevelWin.class);
+        intent.putExtra("NextLevel",5);
+        if(GlobalSettings.lastOpenedLevel<5) {
+            GlobalSettings.lastOpenedLevel = 5;
+            getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putInt("hasOpenedLevel", GlobalSettings.lastOpenedLevel).apply();
+        }
+        startActivity(intent);
     }
 }

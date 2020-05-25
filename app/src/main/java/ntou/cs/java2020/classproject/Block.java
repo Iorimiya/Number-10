@@ -35,6 +35,18 @@ public class Block {
         }
     }
 
+    public Position getPosition() {
+        return position;
+    }
+
+    public int getRow() {
+        return position.getRow();
+    }
+
+    public int getColumn(){
+        return position.getColumn();
+    }
+
     public int getNumber() {
         return number;
     }
@@ -48,11 +60,13 @@ public class Block {
     }
 
     public void setExist(boolean exist) {
-        isExist = exist;
+        this.isExist = exist;
+        updateButton();
     }
 
     public void setHasValue(boolean hasValue) {
         this.hasValue = hasValue;
+        updateButton();
     }
 
     public void setNumber(int number) {
@@ -65,8 +79,8 @@ public class Block {
         button.setOnClickListener(onClickListener);
     }
 
-    public void setEnabled(boolean enabled){
-        button.setEnabled(enabled);
+    public void setClickable(boolean Clickable){
+        button.setEnabled(Clickable);
     }
     public void updateButton(){
         if(isExist&&button.getVisibility()==Button.INVISIBLE)
