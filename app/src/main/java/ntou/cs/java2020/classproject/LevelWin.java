@@ -18,7 +18,7 @@ public class LevelWin extends GlobalSettings {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.level_win_page);
 //        連結頁面
-//        Linking page object
+//        link page object
         nextLevel=this.getIntent().getIntExtra("NextLevel",0);
 //        取得下一關資料
 //        get the next level data
@@ -36,8 +36,8 @@ public class LevelWin extends GlobalSettings {
                 finish();
             }
         });
-//        回選單
-//        back to the title
+//        新增設定按鈕的頁面移動監聽器
+//        add the page moving listener of the setting button
         findViewById(R.id.nextLevelButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,11 +57,11 @@ public class LevelWin extends GlobalSettings {
                     default:
                         startActivity(new Intent(LevelWin.this,Title.class));
                         break;
-                };
+                }
                 finish();
             }
         });
-//        跳至下一關
-//        goto next level
+//        新增下一關按鈕的頁面移動監聽器
+//        add the page moving listener of the next page button
     }
 }

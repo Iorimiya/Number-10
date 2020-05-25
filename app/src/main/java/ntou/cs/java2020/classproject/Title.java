@@ -13,7 +13,7 @@ public class Title extends GlobalSettings {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.title_page);
 //        連結頁面
-//        Linking page object
+//        link page object
         GlobalSettings.lastOpenedLevel = getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).getInt("hasOpenedLevel", 0);
         GlobalSettings.musicControl=getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).getBoolean("musicControl", true);
 //        從Shared Preferences取得相關資料
@@ -32,8 +32,8 @@ public class Title extends GlobalSettings {
                 finish();
             }
         });
-//        設定新遊戲按鈕的ClickListener
-//        setting the Click listener of the newGameButton
+//        新增新遊戲按鈕的頁面移動監聽器
+//        add the page moving listener of the new game button
         findViewById(R.id.levelSelectionButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,23 +41,23 @@ public class Title extends GlobalSettings {
                 finish();
             }
         });
-//        設定關卡選擇按鈕的ClickListener
-//        setting the Click listener of the levelSelectionButton
+//        新增關卡選擇按鈕的頁面移動監聽器
+//        add the page moving listener of the level selection button
         findViewById(R.id.ruleButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Title.this,Rule.class));
             }
         });
-//        設定規則按鈕的ClickListener
-//        setting the Click listener of the ruleButton
+//        新增規則按鈕的頁面移動監聽器
+//        add the page moving listener of the rule button
         findViewById(R.id.settingButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Title.this,Setting.class));
             }
         });
-//        設定設定按鈕的ClickListener
-//        setting the Click listener of the settingButton
+//        新增設定按鈕的頁面移動監聽器
+//        add the page moving listener of the setting button
     }
 }

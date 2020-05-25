@@ -16,7 +16,7 @@ public class Congratulations extends GlobalSettings {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.congratulations_page);
 //        連結頁面
-//        Linking page object
+//        link page object
         try {
             ((GifImageView)findViewById(R.id.gifImage)).setImageDrawable(new GifDrawable(getResources(), R.drawable.congradulations_page_background ));
         } catch (IOException e) {
@@ -31,7 +31,7 @@ public class Congratulations extends GlobalSettings {
                 finish();
             }
         });
-//        回選單
-//        back to the title
+//        新增設定按鈕的頁面移動監聽器
+//        add the page moving listener of the back button
     }
 }

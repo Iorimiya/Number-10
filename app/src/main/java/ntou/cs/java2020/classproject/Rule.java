@@ -11,6 +11,8 @@ public class Rule extends GlobalSettings{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rule_page);
+//        連結頁面
+//        link page object
         findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -18,7 +20,7 @@ public class Rule extends GlobalSettings{
                 finish();
             }
         });
-//        回選單
-//        back to the title
+//        新增設定按鈕的頁面移動監聽器
+//        add the page moving listener of the back button
     }
 }

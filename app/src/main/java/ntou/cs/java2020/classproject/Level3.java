@@ -3,7 +3,6 @@ package ntou.cs.java2020.classproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.*;
 
 import java.util.ArrayList;
 
@@ -14,7 +13,7 @@ public class Level3 extends LevelActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.level3_page);
 //        連結頁面
-//        Linking page object
+//        link page object
         pagePrepare();
 //        頁面準備
         gamePrepare(8,4);

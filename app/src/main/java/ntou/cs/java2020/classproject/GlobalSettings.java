@@ -14,8 +14,8 @@ public abstract class GlobalSettings extends AppCompatActivity {
 //    musicControl：音樂控制選項
 //    skipControl：跳關控制選項
     protected static int lastOpenedLevel=0;
-//    可以遊玩的最後一項關卡
-//    the last level which the player can play
+//    關卡控制選項，可以遊玩的最後一項關卡
+//    opened level control option, the last level which the player can play
     protected static ArrayList<Integer> scoreList=new ArrayList<>(5);
 //    計分表
     //CAN_DELETE
@@ -31,7 +31,7 @@ public abstract class GlobalSettings extends AppCompatActivity {
         if( GlobalSettings.mediaPlayer == null) return false;
         GlobalSettings.mediaPlayer.setLooping(true);
 //            設定迴圈撥放
-//            set the loop play(single media)
+//            set the single media loop play
         GlobalSettings.mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
             @Override
             public boolean onError(MediaPlayer mp, int what, int extra) {
@@ -55,4 +55,6 @@ public abstract class GlobalSettings extends AppCompatActivity {
         }
         return true;
     }
+//    移動狀態至prepared
+//    move the state to "prepared"
 }

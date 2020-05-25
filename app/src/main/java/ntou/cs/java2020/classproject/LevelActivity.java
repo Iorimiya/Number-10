@@ -30,6 +30,7 @@ public abstract class LevelActivity extends GlobalSettings{
     protected ClickedState nowClickedState;
 //    分辨沒有按鈕被按下、按下第一個按鈕和按下第二個按鈕的FSM指示變數
     protected ArrayList<ArrayList<Integer>> ConnectibleNumbers=new ArrayList<>();
+//    可以被消除的整數清單
 
     //game parameter
     protected int score;
@@ -50,27 +51,35 @@ public abstract class LevelActivity extends GlobalSettings{
                 GlobalSettings.skipControl = isChecked;
             }
         });
-//        設定跳關開關狀態&&添加跳關開關CheckedListener
-//        setting the skip switch's state and checked listener
+//        設定跳關開關狀態&&新增跳關切換監聽器
+//        set the skip switch's state listener
+        findViewById(R.id.redealButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deal();
+            }
+        });
+//        新增重發牌監聽器
+//        add the re-dealing listener
     }
 
     protected void gamePrepare(int row,int column){
-        //Linking Object to Variable
+        //link Object to Variable
         totalRow=row;
         totalColumn=column;
         nowClickedState=ClickedState.none;
 
-//        最外圈以外的Block連結到按鈕
         blockSimulatorMap=new ArrayList<>();
         for(int rowCounter=0;rowCounter<totalRow+2;rowCounter++){
             ArrayList<Block> rowTemp=new ArrayList<>();
             for(int columnCounter=0;columnCounter<totalColumn+2;columnCounter++)
                 if (rowCounter == 0 || rowCounter == totalRow + 1 || columnCounter == 0 || columnCounter == totalColumn + 1)
-                    rowTemp.add(new Block(null, rowCounter, columnCounter));
+                    rowTemp.add(new Block(rowCounter, columnCounter));
                 else
-                    rowTemp.add(new Block((Button) findViewById(getResources().getIdentifier(String.format("block%02d%d", rowCounter, columnCounter), "id", getPackageName())), rowCounter, columnCounter));
+                    rowTemp.add(new Block( rowCounter, columnCounter,(Button) findViewById(getResources().getIdentifier(String.format("block%02d%d", rowCounter, columnCounter), "id", getPackageName()))));
             blockSimulatorMap.add(rowTemp);
         }
+//        最外圈以外的Block連結到按鈕
 
         chronometer=findViewById(R.id.chronometerTimer);
         scoreDisplayArea=findViewById(R.id.scoreText);
@@ -81,7 +90,7 @@ public abstract class LevelActivity extends GlobalSettings{
         for(int rowCounter=1;rowCounter<=totalRow;rowCounter++)
             for (int columnCounter = 1; columnCounter <= totalColumn; columnCounter++) {
                 final int finalRowCounter = rowCounter, finalColumnCounter = columnCounter;
-                blockSimulatorMap.get(rowCounter).get(columnCounter).button.setOnClickListener(new View.OnClickListener() {
+                blockSimulatorMap.get(rowCounter).get(columnCounter).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         switch (nowClickedState) {
@@ -89,21 +98,21 @@ public abstract class LevelActivity extends GlobalSettings{
                             case none:
                                 nowClickedState = ClickedState.once;
                                 firstClicked = blockSimulatorMap.get(finalRowCounter).get(finalColumnCounter);
-                                firstClicked.button.setEnabled(false);
+                                firstClicked.setEnabled(false);
                                 break;
 //                            按下一顆：如果連結合規->讓該按鈕消失，else：回復原狀
                             case once:
                                 nowClickedState = ClickedState.none;
                                 secondClicked = blockSimulatorMap.get(finalRowCounter).get(finalColumnCounter);
-                                secondClicked.button.setEnabled(false);
+                                secondClicked.setEnabled(false);
                                 if (connectionAnalysis()) {
-                                    firstClicked.button.setVisibility(Button.INVISIBLE);
-                                    firstClicked.isExist = false;
-                                    secondClicked.button.setVisibility(Button.INVISIBLE);
-                                    secondClicked.isExist = false;
+                                    firstClicked.setExist(false);
+                                    secondClicked.setExist(false);
+                                    firstClicked.updateButton();
+                                    secondClicked.updateButton();
                                 } else {
-                                    firstClicked.button.setEnabled(true);
-                                    secondClicked.button.setEnabled(true);
+                                    firstClicked.setEnabled(true);
+                                    secondClicked.setEnabled(true);
                                 }
                                 firstClicked = null;
                                 secondClicked = null;
@@ -122,26 +131,19 @@ public abstract class LevelActivity extends GlobalSettings{
         int needValueBlocksNumber=0;
         for(ArrayList<Block> RowIterator:blockSimulatorMap)
             for (Block columnIterator : RowIterator)
-                if (columnIterator.isExist) needValueBlocksNumber++;
-
+                if (columnIterator.isExist()) {needValueBlocksNumber++;columnIterator.setHasValue(false);}
+//        取得應給數字的總數
         for(int hasValueCounter=0;hasValueCounter<needValueBlocksNumber;){
-            OriginPair firstPair=new OriginPair(SR.nextInt(totalRow)+1,SR.nextInt(totalColumn)+1),secondPair=new OriginPair(SR.nextInt(totalRow)+1,SR.nextInt(totalColumn)+1);
-            if((firstPair.row==secondPair.row&&firstPair.column==secondPair.column)||blockSimulatorMap.get(firstPair.row).get(firstPair.column).hasValue||blockSimulatorMap.get(secondPair.row).get(secondPair.column).hasValue||!blockSimulatorMap.get(firstPair.row).get(firstPair.column).isExist||!blockSimulatorMap.get(secondPair.row).get(secondPair.column).isExist) continue;
-            int tempSR=SR.nextInt(ConnectibleNumbers.size());
-            firstPair.value=ConnectibleNumbers.get(tempSR).get(0);
-            secondPair.value=ConnectibleNumbers.get(tempSR).get(1);
-            blockSimulatorMap.get(firstPair.row).get(firstPair.column).value=firstPair.value;
-            blockSimulatorMap.get(firstPair.row).get(firstPair.column).button.setText(String.valueOf(firstPair.value));
-            blockSimulatorMap.get(firstPair.row).get(firstPair.column).hasValue=true;
-            blockSimulatorMap.get(secondPair.row).get(secondPair.column).value=secondPair.value;
-            blockSimulatorMap.get(secondPair.row).get(secondPair.column).button.setText(String.valueOf(secondPair.value));
-            blockSimulatorMap.get(secondPair.row).get(secondPair.column).hasValue=true;
+            Position firstPosition=new Position(SR.nextInt(totalRow)+1,SR.nextInt(totalColumn)+1),secondPosition=new Position(SR.nextInt(totalRow)+1,SR.nextInt(totalColumn)+1);
+            if((firstPosition.getRow()==secondPosition.getRow()&&firstPosition.getColumn()==secondPosition.getColumn())||blockSimulatorMap.get(firstPosition.getRow()).get(firstPosition.getColumn()).isHasValue()||blockSimulatorMap.get(secondPosition.getRow()).get(secondPosition.getColumn()).isHasValue()||!blockSimulatorMap.get(firstPosition.getRow()).get(firstPosition.getColumn()).isExist()||!blockSimulatorMap.get(secondPosition.getRow()).get(secondPosition.getColumn()).isExist()) continue;
+            int randomNumberIndex=SR.nextInt(ConnectibleNumbers.size());
+            blockSimulatorMap.get(firstPosition.getRow()).get(firstPosition.getColumn()).setNumber(ConnectibleNumbers.get(randomNumberIndex).get(0));
+            blockSimulatorMap.get(firstPosition.getRow()).get(firstPosition.getColumn()).updateButton();
+            blockSimulatorMap.get(secondPosition.getRow()).get(secondPosition.getColumn()).setNumber(ConnectibleNumbers.get(randomNumberIndex).get(1));
+            blockSimulatorMap.get(secondPosition.getRow()).get(secondPosition.getColumn()).updateButton();
             hasValueCounter+=2;
         }
-    }
-
-    protected void redeal(){
-
+//        給數字
     }
 
     protected boolean connectionAnalysis(){
@@ -157,5 +159,5 @@ public abstract class LevelActivity extends GlobalSettings{
             chronometer.stop();
         }
     }
-
+//    開啟/關閉音樂
 }
