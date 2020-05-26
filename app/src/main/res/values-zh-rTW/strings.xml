@@ -8,11 +8,18 @@
     <string name="title_settingButtonText">設定</string>
     <string name="setting_titleText">設定</string>
     <string name="setting_musicText">音樂:</string>
-    <string name="setting_finishedLevelText">最高可遊玩關卡設置:\n( 開  發  者  用 )</string>
+    <string name="setting_developerButtonText">開發者選項</string>
+    <string name="setting_scoreButtonText">遊戲紀錄</string>
     <string name="global_backButtonText">回選單</string>
     <string name="global_redealButtonText">重發牌</string>
     <string name="global_timerText">時間：</string>
     <string name="global_scoreText">分數:</string>
     <string name="global_nextButtonText">下一關</string>
     <string name="game_scoreDisplayMessage">本關得分</string>
+    <string name="scoreDialog_title">各關卡最高得分：</string>
+    <string name="scoreDialog_level1">關卡 1:</string>
+    <string name="scoreDialog_level2">關卡 2:</string>
+    <string name="scoreDialog_level3">關卡 3:</string>
+    <string name="scoreDialog_level4">關卡 4:</string>
+    <string name="scoreDialog_level5">關卡 5:</string>
 </resources>

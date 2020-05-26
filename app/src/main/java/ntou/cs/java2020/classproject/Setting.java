@@ -1,5 +1,7 @@
 package ntou.cs.java2020.classproject;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,12 +18,27 @@ public class Setting extends GlobalSettings {
         ((Switch)findViewById(R.id.musicSwitch)).setChecked(GlobalSettings.musicControl);
 //        依據音樂控制選項設定音樂控制開關的狀態
 //        set the state of the music control switch according to the music control option
+        /*
         if(GlobalSettings.lastOpenedLevel!=0)
             findViewById(getResources().getIdentifier("FinishedLV"+GlobalSettings.lastOpenedLevel+"Button", "id", getPackageName())).setEnabled(false);
         else
             findViewById(getResources().getIdentifier("FinishedResetButton", "id", getPackageName())).setEnabled(false);
+
+         */
 //        依據關卡控制選項啟用按鈕
 //        enable the button according the level control option
+
+        (findViewById(R.id.recordButton)).setOnClickListener((v)->{
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(Setting.this);
+            alertDialog.setTitle(getString(R.string.scoreDialog_title));
+            String Message="";
+            for(int counter=0;counter<5;counter++)
+                Message+=getString(getResources().getIdentifier(String.format("scoreDialog_level%d",counter+1), "string", getPackageName()))+GlobalSettings.scoreList.get(counter)+'\n';
+            alertDialog.setMessage(Message);
+            alertDialog.setPositiveButton("確定", (DialogInterface dialog, int which)-> {Toast.makeText(getBaseContext(),"確定",Toast.LENGTH_SHORT).show();});
+            alertDialog.setCancelable(false);
+            alertDialog.show();
+        });
         ((Switch)findViewById(R.id.musicSwitch)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -37,6 +54,9 @@ public class Setting extends GlobalSettings {
         });
 //        新增音樂切換監聽器
 //        add the music switch listener
+
+
+                /*
         findViewById(R.id.FinishedResetButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +86,7 @@ public class Setting extends GlobalSettings {
             });
 //        新增關卡記錄設定監聽器
 //        add the level record setting listener
+                 */
         findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,5 +96,6 @@ public class Setting extends GlobalSettings {
         });
 //        新增設定按鈕的頁面移動監聽器
 //        add the page moving listener of the back button
+
     }
 }

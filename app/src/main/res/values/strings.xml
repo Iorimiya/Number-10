@@ -7,11 +7,18 @@
     <string name="title_settingButtonText">Setting</string>
     <string name="setting_titleText">Settings</string>
     <string name="setting_musicText">Music:</string>
-    <string name="setting_finishedLevelText">Highest Playable Level:\n( for developer )</string>
+    <string name="setting_developerButtonText">Developer Option</string>
+    <string name="setting_scoreButtonText">Game Record</string>
     <string name="global_backButtonText">Back</string>
     <string name="global_redealButtonText">Redeal</string>
     <string name="global_timerText">Timer:</string>
     <string name="global_scoreText">Score:</string>
     <string name="global_nextButtonText">Next Level</string>
     <string name="game_scoreDisplayMessage">Your Score at this level</string>
+    <string name="scoreDialog_title">the highest score：</string>
+    <string name="scoreDialog_level1">level 1:</string>
+    <string name="scoreDialog_level2">level 2:</string>
+    <string name="scoreDialog_level3">level 3:</string>
+    <string name="scoreDialog_level4">level 4:</string>
+    <string name="scoreDialog_level5">level 5:</string>
 </resources>
