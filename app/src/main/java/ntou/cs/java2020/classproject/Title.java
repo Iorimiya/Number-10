@@ -32,6 +32,8 @@ public class Title extends GlobalSettings {
         findViewById(R.id.newGameButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GlobalSettings.lastOpenedLevel = 1;
+                getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putInt("hasOpenedLevel", GlobalSettings.lastOpenedLevel).apply();
                 startActivity(new Intent(Title.this,Level1.class));
                 finish();
             }

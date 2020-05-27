@@ -41,9 +41,9 @@ public class Setting extends GlobalSettings {
             alertDialog.setTitle(getString(R.string.scoreDialog_title));
             String Message="";
             for(int counter=0;counter<5;counter++)
-                Message+=getString(getResources().getIdentifier(String.format("global_level%d:",counter+1), "string", getPackageName()))+GlobalSettings.scoreList.get(counter)+'\n';
+                Message+=getString(getResources().getIdentifier(String.format("global_level%d",counter+1), "string", getPackageName()))+": "+GlobalSettings.scoreList.get(counter)+'\n';
             alertDialog.setMessage(Message);
-            alertDialog.setPositiveButton("確定", (DialogInterface dialog, int which)-> {Toast.makeText(getBaseContext(),"確定",Toast.LENGTH_SHORT).show();});
+            alertDialog.setPositiveButton("確定", (DialogInterface dialog, int which)-> {});
             alertDialog.setCancelable(false);
             alertDialog.show();
         });

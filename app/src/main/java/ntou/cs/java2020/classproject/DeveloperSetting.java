@@ -65,9 +65,11 @@ public class DeveloperSetting extends GlobalSettings {
 //        add the music clear listener
 
         findViewById(R.id.resetRecordButton).setOnClickListener((view)->{
-            for(int counter=0;counter<5;counter++)
-                if(getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).getInt(String.format("level%dHighestScore", counter + 1), 0)!=0)
+            for(int counter=0;counter<5;counter++) {
+                GlobalSettings.scoreList.set(counter, 0);
+                if (getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).getInt(String.format("level%dHighestScore", counter + 1), 0) != 0)
                     getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().remove(String.format("level%dHighestScore", counter + 1)).apply();
+            }
         });
 //        新增分數記錄消除監聽器
 //        add the score clear listener
