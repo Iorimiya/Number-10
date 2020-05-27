@@ -14,11 +14,20 @@
     <string name="global_timerText">Timer:</string>
     <string name="global_scoreText">Score:</string>
     <string name="global_nextButtonText">Next Level</string>
+    <string name="global_level1">Level 1</string>
+    <string name="global_level2">Level 2</string>
+    <string name="global_level3">Level 3</string>
+    <string name="global_level4">Level 4</string>
+    <string name="global_level5">Level 5</string>
     <string name="game_scoreDisplayMessage">Your Score at this level</string>
     <string name="scoreDialog_title">the highest score：</string>
-    <string name="scoreDialog_level1">level 1:</string>
-    <string name="scoreDialog_level2">level 2:</string>
-    <string name="scoreDialog_level3">level 3:</string>
-    <string name="scoreDialog_level4">level 4:</string>
-    <string name="scoreDialog_level5">level 5:</string>
+    <string name="rule_title">Game Rule：</string>
+    <string name="rule_paragraph1">I. Introduction of this game:\n\tThis game is a level-designed game.the levels can be unlock sequentially.the unlocked level can be challenge repeatedly\nNew Game：Starting a new game from level 1.\nLevel：the unlocked level can be selected to play again.</string>
+    <string name="rule_paragraph2">II. the rule of connection:\n\tThere are a equation in each level.Please find the 2 number of the solution ☆(did\'t need ordered).If these 2 number can be connected with three straight line(or below), these number will eliminate.</string>
+    <string name="rule_paragraph3">III. the rule if score:\n\tplayer can get 20 point when eliminate a pair.if you clear all number in a specific time, player can get 1.5 times of the total score in this level.</string>
+    <string name="rule_level1BounsTime">15 seconds</string>
+    <string name="rule_level2BounsTime">20 seconds</string>
+    <string name="rule_level3BounsTime">45 seconds</string>
+    <string name="rule_level4BounsTime">60 seconds</string>
+    <string name="rule_level5BounsTime">90 seconds</string>
 </resources>

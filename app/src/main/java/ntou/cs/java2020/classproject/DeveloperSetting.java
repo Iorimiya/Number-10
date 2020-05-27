@@ -2,7 +2,6 @@ package ntou.cs.java2020.classproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Switch;
 
@@ -32,7 +31,6 @@ public class DeveloperSetting extends GlobalSettings {
             findViewById(getResources().getIdentifier("lastOpenedLV" + counter + "Button", "id", getPackageName())).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("Bookfish",v.getResources().getResourceName(v.getId()).split("LV")[1]);
                     GlobalSettings.lastOpenedLevel = Integer.parseInt(String.valueOf(v.getResources().getResourceName(v.getId()).split("LV")[1].charAt(0)));
                     getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putInt("hasOpenedLevel", GlobalSettings.lastOpenedLevel).apply();
                     findViewById(R.id.resetLevelButton).setEnabled(true);

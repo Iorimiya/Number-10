@@ -15,11 +15,20 @@
     <string name="global_timerText">時間：</string>
     <string name="global_scoreText">分數:</string>
     <string name="global_nextButtonText">下一關</string>
+    <string name="global_level1">關卡 1</string>
+    <string name="global_level2">關卡 2</string>
+    <string name="global_level3">關卡 3</string>
+    <string name="global_level4">關卡 4</string>
+    <string name="global_level5">關卡 5</string>
     <string name="game_scoreDisplayMessage">本關得分</string>
     <string name="scoreDialog_title">各關卡最高得分：</string>
-    <string name="scoreDialog_level1">關卡 1:</string>
-    <string name="scoreDialog_level2">關卡 2:</string>
-    <string name="scoreDialog_level3">關卡 3:</string>
-    <string name="scoreDialog_level4">關卡 4:</string>
-    <string name="scoreDialog_level5">關卡 5:</string>
+    <string name="rule_title">遊戲規則：</string>
+    <string name="rule_paragraph1">（一）基本介紹：\n此遊戲為闖關型遊戲，請依序解鎖每一個等級，已解鎖關卡可重複挑戰。\nNew Game：開始一個新遊戲，從第一關開始。\nLevel：可選擇已解鎖關卡，再次挑戰已破解的關卡。</string>
+    <string name="rule_paragraph2">（二）連連看規則：\n每一關都有一個方程式，☆為未知數，請找出作為解的兩張牌用3根以內的直線消除（沒有先後順序）。</string>
+    <string name="rule_paragraph3">（三）計分規則：\n每消去一組解可得20分，在高分時限內（無提示）破完整關可獲得分數加乘1.5倍，每關分數獨立，高分時限如下：</string>
+    <string name="rule_level1BounsTime">15秒</string>
+    <string name="rule_level2BounsTime">20秒</string>
+    <string name="rule_level3BounsTime">45秒</string>
+    <string name="rule_level4BounsTime">60秒</string>
+    <string name="rule_level5BounsTime">90秒</string>
 </resources>
