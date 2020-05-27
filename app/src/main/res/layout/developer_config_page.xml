@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/global_backButtonText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <TextView
+        android:id="@+id/finishedLevelTopic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Highest Playable Level:"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/lastOpenedLV1Button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:enabled="true"
+        android:text="1"
+        app:layout_constraintBottom_toBottomOf="@+id/finishedLevelTopic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toEndOf="@+id/finishedLevelTopic"
+        app:layout_constraintTop_toTopOf="@+id/finishedLevelTopic"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/lastOpenedLV2Button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:enabled="true"
+        android:text="2"
+        app:layout_constraintBottom_toBottomOf="@+id/finishedLevelTopic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toEndOf="@+id/finishedLevelTopic"
+        app:layout_constraintTop_toTopOf="@+id/finishedLevelTopic"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/lastOpenedLV3Button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:enabled="true"
+        android:text="3"
+        app:layout_constraintBottom_toBottomOf="@+id/finishedLevelTopic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/finishedLevelTopic"
+        app:layout_constraintTop_toTopOf="@+id/finishedLevelTopic"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/lastOpenedLV4Button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:enabled="true"
+        android:text="4"
+        app:layout_constraintBottom_toBottomOf="@+id/finishedLevelTopic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toEndOf="@+id/finishedLevelTopic"
+        app:layout_constraintTop_toTopOf="@+id/finishedLevelTopic"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/lastOpenedLV5Button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:enabled="true"
+        android:text="5"
+        app:layout_constraintBottom_toBottomOf="@+id/finishedLevelTopic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toEndOf="@+id/finishedLevelTopic"
+        app:layout_constraintTop_toTopOf="@+id/finishedLevelTopic"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/resetMusicButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RMusic"
+        app:layout_constraintBottom_toBottomOf="@+id/resetLevelButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/resetLevelButton"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/resetLevelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RLevel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7" />
+
+    <Button
+        android:id="@+id/resetRecordButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RRecord"
+        app:layout_constraintBottom_toBottomOf="@+id/resetLevelButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/resetLevelButton"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Switch
+        android:id="@+id/skipLevelSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:text="SkipLevel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+</androidx.constraintlayout.widget.ConstraintLayout>

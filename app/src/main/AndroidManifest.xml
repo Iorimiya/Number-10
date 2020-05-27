@@ -16,16 +16,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".LevelSelection" />
+        <activity android:name=".Setting" />
+        <activity android:name=".DeveloperSetting" />
         <activity android:name=".Rule" />
         <activity android:name=".Level1" />
         <activity android:name=".Level2" />
         <activity android:name=".Level3" />
         <activity android:name=".Level4" />
         <activity android:name=".Level5" />
-        <activity android:name=".Congratulations" />
-        <activity android:name=".Setting" />
         <activity android:name=".LevelWin" />
-
+        <activity android:name=".Congratulations" />
     </application>
 
 </manifest>
