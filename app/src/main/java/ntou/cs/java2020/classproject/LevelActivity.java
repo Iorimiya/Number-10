@@ -2,10 +2,7 @@ package ntou.cs.java2020.classproject;
 
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Chronometer;
-import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,6 +10,7 @@ import android.widget.Toast;
 import java.nio.ByteBuffer;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public abstract class LevelActivity extends GlobalSettings{
     //Base Object
@@ -30,13 +28,13 @@ public abstract class LevelActivity extends GlobalSettings{
 //    被按到的先後物件
     protected ClickedState nowClickedState;
 //    分辨沒有按鈕被按下、按下第一個按鈕和按下第二個按鈕的FSM指示變數
-    protected ArrayList<ArrayList<Integer>> ConnectibleNumbers=new ArrayList<>();
+    protected ArrayList<ArrayList<Integer>> connectibleNumbers=new ArrayList<>();
 //    可以被消除的整數清單
 
     //game parameter
     protected int score=0,existBlockCounter,passedTime,bonusTime;
 //    分數、剩餘Block數、經過時間、獎勵時間
-    protected enum TimerState {start,end}
+    protected enum TimerState {start,stop}
 //    分辨計時參數為開始或結束的列舉
     protected enum ClickedState{none,once}
 //    分辨沒有按鈕被按下、按下第一個按鈕和按下第二個按鈕的FSM指示列舉
@@ -46,24 +44,16 @@ public abstract class LevelActivity extends GlobalSettings{
 
     protected void pagePrepare(){
         ((Switch)findViewById(R.id.skipSwitch)).setChecked(GlobalSettings.skipControl);
-        ((Switch)findViewById(R.id.skipSwitch)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                GlobalSettings.skipControl = isChecked;
-            }
-        });
+        ((Switch)findViewById(R.id.skipSwitch)).setOnCheckedChangeListener((buttonView, isChecked) -> GlobalSettings.skipControl = isChecked);
 //        設定跳關開關狀態&&新增跳關切換監聽器
 //        set the skip switch's state listener
-        findViewById(R.id.redealButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(nowClickedState==ClickedState.once){
-                    nowClickedState=ClickedState.none;
-                    firstClicked.setClickable(true);
-                    firstClicked=null;
-                }
-                deal();
+        findViewById(R.id.redealButton).setOnClickListener(v -> {
+            if(nowClickedState==ClickedState.once){
+                nowClickedState=ClickedState.none;
+                firstClicked.setClickable(true);
+                firstClicked=null;
             }
+            deal();
         });
 //        新增重發牌監聽器
 //        add the re-dealing listener
@@ -83,7 +73,7 @@ public abstract class LevelActivity extends GlobalSettings{
                 if (rowCounter == 0 || rowCounter == totalRow + 1 || columnCounter == 0 || columnCounter == totalColumn + 1)
                     rowTemp.add(new Block(rowCounter, columnCounter));
                 else
-                    rowTemp.add(new Block( rowCounter, columnCounter,(Button) findViewById(getResources().getIdentifier(String.format("block%02d%d", rowCounter, columnCounter), "id", getPackageName()))));
+                    rowTemp.add(new Block( rowCounter, columnCounter, findViewById(getResources().getIdentifier(String.format(Locale.getDefault(),"block%02d%d", rowCounter, columnCounter), "id", getPackageName()))));
             blockSimulatorMap.add(rowTemp);
         }
 //        最外圈以外的Block連結到按鈕
@@ -98,40 +88,37 @@ public abstract class LevelActivity extends GlobalSettings{
         for(int rowCounter=1;rowCounter<=totalRow;rowCounter++)
             for (int columnCounter = 1; columnCounter <= totalColumn; columnCounter++) {
                 final int finalRowCounter = rowCounter, finalColumnCounter = columnCounter;
-                blockSimulatorMap.get(rowCounter).get(columnCounter).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        switch (nowClickedState) {
+                blockSimulatorMap.get(rowCounter).get(columnCounter).setOnClickListener(v -> {
+                    switch (nowClickedState) {
 //                            還沒有任何按鈕被按時：設定狀態為按下一顆按鈕，將被按下的按鈕連結到firstClicked上，讓該按鈕失效(避免重複按下+提示使用者被按下的按鈕)。
-                            case none:
-                                nowClickedState = ClickedState.once;
-                                firstClicked = blockSimulatorMap.get(finalRowCounter).get(finalColumnCounter);
-                                firstClicked.setClickable(false);
-                                break;
+                        case none:
+                            nowClickedState = ClickedState.once;
+                            firstClicked = blockSimulatorMap.get(finalRowCounter).get(finalColumnCounter);
+                            firstClicked.setClickable(false);
+                            break;
 //                            按下一顆：如果連結合規->讓該按鈕消失，else：回復原狀
-                            case once:
-                                nowClickedState = ClickedState.none;
-                                secondClicked = blockSimulatorMap.get(finalRowCounter).get(finalColumnCounter);
-                                secondClicked.setClickable(false);
-                                if (connectionAnalysis()) {
-                                    firstClicked.setExist(false);
-                                    secondClicked.setExist(false);
-                                    score+=20;
-                                    scoreDisplayArea.setText(String.valueOf(score));
-                                    existBlockCounter-=2;
-                                    if(existBlockCounter==0){
-                                        finishProcess();
-                                    }
-                                } else {
-                                    firstClicked.setClickable(true);
-                                    secondClicked.setClickable(true);
+                        case once:
+                            nowClickedState = ClickedState.none;
+                            secondClicked = blockSimulatorMap.get(finalRowCounter).get(finalColumnCounter);
+                            secondClicked.setClickable(false);
+                            if (connectionAnalysis()) {
+                                firstClicked.setExist(false);
+                                secondClicked.setExist(false);
+                                score+=20;
+                                scoreDisplayArea.setText(String.valueOf(score));
+                                existBlockCounter-=2;
+                                if(existBlockCounter==0){
+                                    finishProcess();
                                 }
-                                firstClicked = null;
-                                secondClicked = null;
-                                break;
-                            default:
-                                throw new IllegalStateException("Unexpected value: " + nowClickedState);
-                        }
+                            } else {
+                                firstClicked.setClickable(true);
+                                secondClicked.setClickable(true);
+                            }
+                            firstClicked = null;
+                            secondClicked = null;
+                            break;
+                        default:
+                            throw new IllegalStateException("Unexpected value: " + nowClickedState);
                     }
                 });
             }
@@ -142,7 +129,7 @@ public abstract class LevelActivity extends GlobalSettings{
         if(control==TimerState.start) {
             chronometer.setBase(SystemClock.elapsedRealtime());
             chronometer.start();
-        }else if(control==TimerState.end){
+        }else if(control==TimerState.stop){
             chronometer.stop();
         }
     }
@@ -158,9 +145,9 @@ public abstract class LevelActivity extends GlobalSettings{
         for(int hasValueCounter=0;hasValueCounter<needValueBlocksNumber;){
             Position firstPosition=new Position(SR.nextInt(totalRow)+1,SR.nextInt(totalColumn)+1),secondPosition=new Position(SR.nextInt(totalRow)+1,SR.nextInt(totalColumn)+1);
             if((firstPosition.getRow()==secondPosition.getRow()&&firstPosition.getColumn()==secondPosition.getColumn())||blockSimulatorMap.get(firstPosition.getRow()).get(firstPosition.getColumn()).isHasValue()||blockSimulatorMap.get(secondPosition.getRow()).get(secondPosition.getColumn()).isHasValue()||!blockSimulatorMap.get(firstPosition.getRow()).get(firstPosition.getColumn()).isExist()||!blockSimulatorMap.get(secondPosition.getRow()).get(secondPosition.getColumn()).isExist()) continue;
-            int randomNumberIndex=SR.nextInt(ConnectibleNumbers.size());
-            blockSimulatorMap.get(firstPosition.getRow()).get(firstPosition.getColumn()).setNumber(ConnectibleNumbers.get(randomNumberIndex).get(0));
-            blockSimulatorMap.get(secondPosition.getRow()).get(secondPosition.getColumn()).setNumber(ConnectibleNumbers.get(randomNumberIndex).get(1));
+            int randomNumberIndex=SR.nextInt(connectibleNumbers.size());
+            blockSimulatorMap.get(firstPosition.getRow()).get(firstPosition.getColumn()).setNumber(connectibleNumbers.get(randomNumberIndex).get(0));
+            blockSimulatorMap.get(secondPosition.getRow()).get(secondPosition.getColumn()).setNumber(connectibleNumbers.get(randomNumberIndex).get(1));
             hasValueCounter+=2;
         }
 //        給數字
@@ -213,12 +200,12 @@ public abstract class LevelActivity extends GlobalSettings{
     }
 
     protected void finishProcess(){
-        timerControl(TimerState.end);
+        timerControl(TimerState.stop);
         //Log.d("Number10",chronometer.getContentDescription().toString());
         String[] timerString=chronometer.getText().toString().split(":");
         passedTime=Integer.parseInt(timerString[timerString.length-1])+Integer.parseInt(timerString[timerString.length-2])*60;
         if(timerString.length==3) passedTime+=Integer.parseInt(timerString[0])*3600;
         if(passedTime<=bonusTime) score=(int)(score*1.5);
-        Toast.makeText(getApplicationContext(),String.format("%s：%d",getString(R.string.game_scoreDisplayMessage),score),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),String.format(Locale.getDefault(),"%s：%d",getString(R.string.scoreDisplay),score),Toast.LENGTH_SHORT).show();
     }
 }

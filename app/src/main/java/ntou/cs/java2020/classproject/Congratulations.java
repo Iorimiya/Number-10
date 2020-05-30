@@ -2,7 +2,6 @@ package ntou.cs.java2020.classproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import java.io.IOException;
 
@@ -24,12 +23,9 @@ public class Congratulations extends GlobalSettings {
         }
 //        設定背景gif
 //        set the background image(gif)
-        findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Congratulations.this,Title.class));
-                finish();
-            }
+        findViewById(R.id.backButton).setOnClickListener(v -> {
+            startActivity(new Intent(Congratulations.this,Title.class));
+            finish();
         });
 //        新增設定按鈕的頁面移動監聽器
 //        add the page moving listener of the back button
