@@ -47,8 +47,8 @@ public class Setting extends GlobalSettings {
         });
 //        設定顯示最高分數監聽器
 
-        findViewById(R.id.developerOptionButton).setOnClickListener((v)->{
-            startActivity(new Intent(Setting.this,DeveloperSetting.class));
+        findViewById(R.id.developerConfigButton).setOnClickListener((v)->{
+            startActivity(new Intent(Setting.this, DeveloperConfig.class));
             finish();
         });
 //        新增開發者選項按鈕的頁面移動監聽器

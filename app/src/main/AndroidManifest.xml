@@ -17,7 +17,7 @@
         </activity>
         <activity android:name=".LevelSelection" />
         <activity android:name=".Setting" />
-        <activity android:name=".DeveloperSetting" />
+        <activity android:name=".DeveloperConfig" />
         <activity android:name=".Rule" />
         <activity android:name=".Level1" />
         <activity android:name=".Level2" />
