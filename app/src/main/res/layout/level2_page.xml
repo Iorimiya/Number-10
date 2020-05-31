@@ -19,7 +19,7 @@
         android:id="@+id/scoreText"
         android:layout_width="170dp"
         android:layout_height="20dp"
-        android:text="@string/global_scoreText"
+        android:text="@string/score"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@+id/questionText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
         android:gravity="center"
         android:text="3(2+☆)-☆=10"
         android:textColor="@android:color/white"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionText" />
 
@@ -77,18 +77,21 @@
                 android:id="@+id/block011"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block012"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block013"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
         </TableRow>
 
@@ -100,18 +103,21 @@
                 android:id="@+id/block021"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block022"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block023"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp" />
         </TableRow>
 
@@ -123,18 +129,21 @@
                 android:id="@+id/block031"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block032"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block033"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
         </TableRow>
 
@@ -146,18 +155,21 @@
                 android:id="@+id/block041"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block042"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block043"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
         </TableRow>
 
@@ -169,18 +181,21 @@
                 android:id="@+id/block051"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block052"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block053"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
 
         </TableRow>
@@ -193,18 +208,21 @@
                 android:id="@+id/block061"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block062"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
 
             <Button
                 android:id="@+id/block063"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:padding="0dp"
                 android:textSize="24sp"/>
         </TableRow>
 
@@ -215,7 +233,7 @@
         android:layout_width="70dp"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:text="@string/global_timerText"
+        android:text="@string/timer"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -245,7 +263,7 @@
         android:layout_width="80dp"
         android:layout_height="50dp"
         android:background="@color/TranslucentLightRed"
-        android:text="@string/global_backButtonText"
+        android:text="@string/backButton"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@+id/chronometerText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -259,7 +277,7 @@
         android:layout_width="80dp"
         android:layout_height="50dp"
         android:background="@color/TranslucentLightGreen"
-        android:text="@string/global_redealButtonText"
+        android:text="@string/redealButton"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@+id/chronometerText"
         app:layout_constraintEnd_toStartOf="@+id/backButton"

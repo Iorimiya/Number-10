@@ -39,14 +39,6 @@ public class Block {
         return position;
     }
 
-    public int getRow() {
-        return position.getRow();
-    }
-
-    public int getColumn(){
-        return position.getColumn();
-    }
-
     public int getNumber() {
         return number;
     }

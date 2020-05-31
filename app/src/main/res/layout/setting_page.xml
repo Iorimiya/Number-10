@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/rule_setting_background">
 
     <Button
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/global_backButtonText"
+        android:text="@string/backButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -22,7 +22,8 @@
         android:id="@+id/settingTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/setting_titleText"
+        android:fontFamily="@font/baloo_tamma"
+        android:text="@string/setting"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -34,7 +35,8 @@
         android:id="@+id/musicTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/setting_musicText"
+        android:fontFamily="@font/baloo_tamma"
+        android:text="@string/music"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,20 +44,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.4" />
-
-    <TextView
-        android:id="@+id/finishedLevelTopic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/setting_finishedLevelText"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/musicTopic"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/musicTopic"
-        app:layout_constraintTop_toBottomOf="@+id/musicTopic"
-        app:layout_constraintVertical_bias="0.1" />
 
     <Switch
         android:id="@+id/musicSwitch"
@@ -70,81 +58,25 @@
         app:layout_constraintVertical_bias="0.4" />
 
     <Button
-        android:id="@+id/FinishedResetButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:enabled="true"
-        android:text="R"
-        app:layout_constraintBottom_toBottomOf="@+id/finishedLevelTopic"
+        android:id="@+id/recordButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gameRecord"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toEndOf="@+id/finishedLevelTopic"
-        app:layout_constraintTop_toTopOf="@+id/finishedLevelTopic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
 
     <Button
-        android:id="@+id/FinishedLV1Button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:enabled="true"
-        android:text="1"
-        app:layout_constraintBottom_toBottomOf="@+id/finishedLevelTopic"
+        android:id="@+id/developerConfigButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/developerSetting"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toEndOf="@+id/finishedLevelTopic"
-        app:layout_constraintTop_toTopOf="@+id/finishedLevelTopic"
-        app:layout_constraintVertical_bias="0.5" />
-
-    <Button
-        android:id="@+id/FinishedLV2Button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:enabled="true"
-        android:text="2"
-        app:layout_constraintBottom_toBottomOf="@+id/finishedLevelTopic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toEndOf="@+id/finishedLevelTopic"
-        app:layout_constraintTop_toTopOf="@+id/finishedLevelTopic"
-        app:layout_constraintVertical_bias="0.5" />
-
-    <Button
-        android:id="@+id/FinishedLV3Button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:enabled="true"
-        android:text="3"
-        app:layout_constraintBottom_toBottomOf="@+id/finishedLevelTopic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.55"
-        app:layout_constraintStart_toEndOf="@+id/finishedLevelTopic"
-        app:layout_constraintTop_toTopOf="@+id/finishedLevelTopic"
-        app:layout_constraintVertical_bias="0.5" />
-
-    <Button
-        android:id="@+id/FinishedLV4Button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:enabled="true"
-        android:text="4"
-        app:layout_constraintBottom_toBottomOf="@+id/finishedLevelTopic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.7"
-        app:layout_constraintStart_toEndOf="@+id/finishedLevelTopic"
-        app:layout_constraintTop_toTopOf="@+id/finishedLevelTopic"
-        app:layout_constraintVertical_bias="0.5" />
-
-    <Button
-        android:id="@+id/FinishedLV5Button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:enabled="true"
-        android:text="5"
-        app:layout_constraintBottom_toBottomOf="@+id/finishedLevelTopic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toEndOf="@+id/finishedLevelTopic"
-        app:layout_constraintTop_toTopOf="@+id/finishedLevelTopic"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

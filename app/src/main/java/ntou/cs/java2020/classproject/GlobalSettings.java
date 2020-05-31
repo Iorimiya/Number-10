@@ -32,12 +32,9 @@ public abstract class GlobalSettings extends AppCompatActivity {
         GlobalSettings.mediaPlayer.setLooping(true);
 //            設定迴圈撥放
 //            set the single media loop play
-        GlobalSettings.mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
-            @Override
-            public boolean onError(MediaPlayer mp, int what, int extra) {
-                mp.release();
-                return false;
-            }
+        GlobalSettings.mediaPlayer.setOnErrorListener((mp, what, extra) -> {
+            mp.release();
+            return false;
         });
 //        新增錯誤監聽器
 //        add the error listener

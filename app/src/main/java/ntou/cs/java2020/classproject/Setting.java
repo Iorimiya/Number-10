@@ -1,9 +1,13 @@
 package ntou.cs.java2020.classproject;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.*;
+
+import java.util.Locale;
+
 
 public class Setting extends GlobalSettings {
 
@@ -16,64 +20,46 @@ public class Setting extends GlobalSettings {
         ((Switch)findViewById(R.id.musicSwitch)).setChecked(GlobalSettings.musicControl);
 //        依據音樂控制選項設定音樂控制開關的狀態
 //        set the state of the music control switch according to the music control option
-        if(GlobalSettings.lastOpenedLevel!=0)
-            findViewById(getResources().getIdentifier("FinishedLV"+GlobalSettings.lastOpenedLevel+"Button", "id", getPackageName())).setEnabled(false);
-        else
-            findViewById(getResources().getIdentifier("FinishedResetButton", "id", getPackageName())).setEnabled(false);
-//        依據關卡控制選項啟用按鈕
-//        enable the button according the level control option
-        ((Switch)findViewById(R.id.musicSwitch)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                GlobalSettings.musicControl = isChecked;
-                getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putBoolean("musicControl",GlobalSettings.musicControl).apply();
-                if(musicControl)
-                    GlobalSettings.mediaPlayer.start();
-                else {
-                    GlobalSettings.mediaPlayer.stop();
-                    prepareMediaPlayer();
-                }
+
+        ((Switch)findViewById(R.id.musicSwitch)).setOnCheckedChangeListener((buttonView, isChecked) -> {
+            GlobalSettings.musicControl = isChecked;
+            getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putBoolean("musicControl",GlobalSettings.musicControl).apply();
+            if(musicControl)
+                GlobalSettings.mediaPlayer.start();
+            else {
+                GlobalSettings.mediaPlayer.stop();
+                prepareMediaPlayer();
             }
         });
 //        新增音樂切換監聽器
 //        add the music switch listener
-        findViewById(R.id.FinishedResetButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                GlobalSettings.lastOpenedLevel=0;
-                getSharedPreferences("NumberTenSaveData",MODE_PRIVATE).edit().remove("hasOpenedLevel").apply();
-                findViewById(R.id.FinishedResetButton).setEnabled(false);
-                for(int counter=1;counter<=5;counter++){
-                    findViewById(getResources().getIdentifier("FinishedLV"+counter+"Button", "id", getPackageName())).setEnabled(true);
-                }
-            }
+
+        findViewById(R.id.recordButton).setOnClickListener((v)->{
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(Setting.this);
+            alertDialog.setTitle(getString(R.string.dialog_title));
+            StringBuilder Message= new StringBuilder();
+            for(int counter=0;counter<5;counter++)
+                Message.append(getString(getResources().getIdentifier(String.format(Locale.getDefault(), "level%d", counter + 1), "string", getPackageName()))).append(": ").append(GlobalSettings.scoreList.get(counter)).append('\n');
+            alertDialog.setMessage(Message.toString());
+            alertDialog.setPositiveButton("確定", (DialogInterface dialog, int which)-> {});
+            alertDialog.setCancelable(false);
+            alertDialog.show();
         });
-//        新增關卡記錄消除監聽器
-//        add the level record clear listener
-        for(int counter=1;counter<=5;counter++)
-            findViewById(getResources().getIdentifier("FinishedLV" + counter + "Button", "id", getPackageName())).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    GlobalSettings.lastOpenedLevel = Integer.parseInt(String.valueOf(v.getResources().getResourceName(v.getId()).charAt(43)));
-                    getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putInt("hasOpenedLevel", GlobalSettings.lastOpenedLevel).apply();
-                    findViewById(R.id.FinishedResetButton).setEnabled(true);
-                    for (int counter = 1; counter <= 5; counter++)
-                        if (GlobalSettings.lastOpenedLevel != counter)
-                            findViewById(getResources().getIdentifier("FinishedLV" + counter + "Button", "id", getPackageName())).setEnabled(true);
-                        else
-                            findViewById(getResources().getIdentifier("FinishedLV" + counter + "Button", "id", getPackageName())).setEnabled(false);
-                }
-            });
-//        新增關卡記錄設定監聽器
-//        add the level record setting listener
-        findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Setting.this,Title.class));
-                finish();
-            }
+//        設定顯示最高分數監聽器
+
+        findViewById(R.id.developerConfigButton).setOnClickListener((v)->{
+            startActivity(new Intent(Setting.this, DeveloperConfig.class));
+            finish();
         });
-//        新增設定按鈕的頁面移動監聽器
+//        新增開發者選項按鈕的頁面移動監聽器
+//        add the page moving listener of the developer settings button
+
+        findViewById(R.id.backButton).setOnClickListener(v -> {
+            startActivity(new Intent(Setting.this,Title.class));
+            finish();
+        });
+//        新增返回按鈕的頁面移動監聽器
 //        add the page moving listener of the back button
+
     }
 }

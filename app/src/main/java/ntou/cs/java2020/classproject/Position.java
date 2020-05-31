@@ -3,10 +3,6 @@ public class Position {
 
     private final int row,column;
 
-    Position(){
-        this(0,0);
-    }
-
     Position(int row, int column){
         this.row=row;
         this.column=column;
