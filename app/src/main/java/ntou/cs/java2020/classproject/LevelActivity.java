@@ -28,7 +28,7 @@ public abstract class LevelActivity extends GlobalSettings{
 //    被按到的先後物件
     protected ClickedState nowClickedState;
 //    分辨沒有按鈕被按下、按下第一個按鈕和按下第二個按鈕的FSM指示變數
-    protected ArrayList<ArrayList<Integer>> connectibleNumbers=new ArrayList<>();
+    protected final ArrayList<ArrayList<Integer>> connectibleNumbers=new ArrayList<>();
 //    可以被消除的整數清單
 
     //game parameter
@@ -206,6 +206,6 @@ public abstract class LevelActivity extends GlobalSettings{
         passedTime=Integer.parseInt(timerString[timerString.length-1])+Integer.parseInt(timerString[timerString.length-2])*60;
         if(timerString.length==3) passedTime+=Integer.parseInt(timerString[0])*3600;
         if(passedTime<=bonusTime) score=(int)(score*1.5);
-        Toast.makeText(getApplicationContext(),String.format(Locale.getDefault(),"%s：%d",getString(R.string.scoreDisplay),score),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),String.format(Locale.getDefault(),"%s：%d",getString(R.string.gameWin_score),score),Toast.LENGTH_SHORT).show();
     }
 }

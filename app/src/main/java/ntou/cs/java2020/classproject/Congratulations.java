@@ -17,13 +17,13 @@ public class Congratulations extends GlobalSettings {
 //        連結頁面
 //        link page object
         try {
-            ((GifImageView)findViewById(R.id.gifImage)).setImageDrawable(new GifDrawable(getResources(), R.drawable.congradulations_page_background ));
+            ((GifImageView)findViewById(R.id.gifImage)).setImageDrawable(new GifDrawable(getResources(), R.drawable.congratulations_page_background));
         } catch (IOException e) {
             e.printStackTrace();
         }
 //        設定背景gif
 //        set the background image(gif)
-        findViewById(R.id.backButton).setOnClickListener(v -> {
+        findViewById(R.id.menuButton).setOnClickListener(v -> {
             startActivity(new Intent(Congratulations.this,Title.class));
             finish();
         });

@@ -1,43 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/backButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
 
     <TextView
         android:id="@+id/finishedLevelTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Highest Playable Level:"
-        android:textSize="10sp"
+        android:text="@string/developerConfig_highestPlayableLevelLabel"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.4" />
 
     <Button
         android:id="@+id/lastOpenedLV1Button"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:enabled="true"
-        android:text="1"
+        android:text="@string/developerConfig_1"
         app:layout_constraintBottom_toBottomOf="@+id/finishedLevelTopic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
@@ -50,7 +37,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:enabled="true"
-        android:text="2"
+        android:text="@string/developerConfig_2"
         app:layout_constraintBottom_toBottomOf="@+id/finishedLevelTopic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.3"
@@ -63,7 +50,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:enabled="true"
-        android:text="3"
+        android:text="@string/developerConfig_3"
         app:layout_constraintBottom_toBottomOf="@+id/finishedLevelTopic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -76,7 +63,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:enabled="true"
-        android:text="4"
+        android:text="@string/developerConfig_4"
         app:layout_constraintBottom_toBottomOf="@+id/finishedLevelTopic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.7"
@@ -89,7 +76,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:enabled="true"
-        android:text="5"
+        android:text="@string/developerConfig_5"
         app:layout_constraintBottom_toBottomOf="@+id/finishedLevelTopic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
@@ -97,11 +84,22 @@
         app:layout_constraintTop_toTopOf="@+id/finishedLevelTopic"
         app:layout_constraintVertical_bias="0.5" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/developerConfig_resetLabel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
     <Button
         android:id="@+id/resetMusicButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RMusic"
+        android:text="@string/developerConfig_resetMusic"
         app:layout_constraintBottom_toBottomOf="@+id/resetLevelButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
@@ -113,19 +111,19 @@
         android:id="@+id/resetLevelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RLevel"
+        android:text="@string/developConfig_resetLevel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7" />
+        app:layout_constraintVertical_bias="0.6" />
 
     <Button
         android:id="@+id/resetRecordButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RRecord"
+        android:text="@string/developerConfig_resetRecord"
         app:layout_constraintBottom_toBottomOf="@+id/resetLevelButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
@@ -137,11 +135,25 @@
         android:id="@+id/skipLevelSwitch"
         android:layout_width="wrap_content"
         android:layout_height="27dp"
-        android:text="SkipLevel"
+        android:text="@string/developerConfig_skipLevelSwitch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.25" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/developerConfig_backButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

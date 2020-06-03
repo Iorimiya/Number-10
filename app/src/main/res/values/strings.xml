@@ -1,26 +1,26 @@
 <resources>
-    <string name="app_name">Number 10</string>
-    <string name="project_name">ClassProjectOfJavaClass</string>
-    <string name="newGame">New Game</string>
-    <string name="levelSelection">Level Selection</string>
-    <string name="rule">Rule</string>
-    <string name="setting">Setting</string>
-    <string name="music">Music:</string>
-    <string name="developerSetting">Developer Option</string>
-    <string name="gameRecord">Game Record</string>
-    <string name="backButton">Back</string>
-    <string name="redealButton">Redeal</string>
-    <string name="timer">Timer:</string>
-    <string name="score">Score:</string>
-    <string name="nextButton">Next Level</string>
-    <string name="level1">Level 1</string>
-    <string name="level2">Level 2</string>
-    <string name="level3">Level 3</string>
-    <string name="level4">Level 4</string>
-    <string name="level5">Level 5</string>
-    <string name="scoreDisplay">Your Score at this level</string>
-    <string name="dialog_title">the highest score：</string>
-    <string name="rule_title">Game Rule：</string>
+    <string name="global_appName">Number 10</string>
+    <string name="global_projectName">ClassProjectOfJavaClass</string>
+    <string name="global_newGame">New Game</string>
+    <string name="global_levelSelection">Level Selection</string>
+    <string name="global_rule">Rule</string>
+    <string name="global_setting">Setting</string>
+    <string name="global_musicLabel">Music:</string>
+    <string name="global_developerConfig">Developer Config</string>
+    <string name="global_gameRecord">Game Record</string>
+    <string name="global_menuButton">Back</string>
+    <string name="game_redealButton">Redeal</string>
+    <string name="game_timerLabel">Timer:</string>
+    <string name="game_scoreLabel">Score:</string>
+    <string name="game_nextButton">Next Level</string>
+    <string name="global_level1" translatable="false">Level 1</string>
+    <string name="global_level2" translatable="false">Level 2</string>
+    <string name="global_level3" translatable="false">Level 3</string>
+    <string name="global_level4" translatable="false">Level 4</string>
+    <string name="global_level5" translatable="false">Level 5</string>
+    <string name="gameWin_score">Your Score at this level</string>
+    <string name="setting_scoreLabel">the highest score：</string>
+    <string name="rule_title">Game Rule</string>
     <string name="rule_paragraph1">I. Introduction of this game:\n\tThis game is a level-designed game.The levels can be unlocked sequentially.The unlocked level can be challenged repeatedly.\nNew Game：Start a new game from level 1.\nLevel Selection：The unlocked level can be selected to play again.</string>
     <string name="rule_paragraph2">II. The rule of connection:\n\tThere is an equation in each level.Please find a pair of numbers which is the solution ☆(didn\'t need to be ordered).If the numbers player chose can be connected with three straight lines(or below), these numbers will eliminate.</string>
     <string name="rule_paragraph3">III. The rule of score:\n\tPlayer can get 20 points when eliminating each pair of numbers.If the player clears all numbers in a specific time, player can get 1.5 times of the total score in this level.</string>
@@ -29,4 +29,26 @@
     <string name="rule_level3BonusTime">45 seconds</string>
     <string name="rule_level4BonusTime">60 seconds</string>
     <string name="rule_level5BonusTime">90 seconds</string>
+    <string name="developerConfig_backButton">back</string>
+    <string name="developerConfig_skipLevelSwitch">Skip Level</string>
+    <string name="developerConfig_highestPlayableLevelLabel">Highest Playable Level:</string>
+    <string name="developerConfig_resetRecord">Record</string>
+    <string name="developerConfig_resetLabel">ResetLocalData</string>
+    <string name="developerConfig_resetMusic">Music</string>
+    <string name="developConfig_resetLevel">Level</string>
+    <string name="game_question1Label" translatable="false">Question1:</string>
+    <string name="game_question2Label" translatable="false">Question2:</string>
+    <string name="game_question3Label" translatable="false">Question3:</string>
+    <string name="game_question4Label" translatable="false">Question4:</string>
+    <string name="game_question5Label" translatable="false">Question5:</string>
+    <string name="game_question1" translatable="false">☆ x ☆=10</string>
+    <string name="game_question2" translatable="false">☆ x ☆=10</string>
+    <string name="game_question3" translatable="false">☆ x ☆=10</string>
+    <string name="game_question4" translatable="false">☆ x ☆=10</string>
+    <string name="game_question5" translatable="false">☆ x ☆=10</string>
+    <string name="developerConfig_1" translatable="false">1</string>
+    <string name="developerConfig_2" translatable="false">2</string>
+    <string name="developerConfig_3" translatable="false">3</string>
+    <string name="developerConfig_4" translatable="false">4</string>
+    <string name="developerConfig_5" translatable="false">5</string>
 </resources>
