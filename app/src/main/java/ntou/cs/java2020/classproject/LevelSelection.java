@@ -11,7 +11,7 @@ public class LevelSelection extends GlobalSettings {
         setContentView(R.layout.level_selection_page);
 //        連結頁面
 //        link page object
-        findViewById(R.id.backButton).setOnClickListener(v -> {
+        findViewById(R.id.menuButton).setOnClickListener(v -> {
             startActivity(new Intent(LevelSelection.this,Title.class));
             finish();
         });
