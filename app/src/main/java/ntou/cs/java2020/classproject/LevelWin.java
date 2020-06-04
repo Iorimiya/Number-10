@@ -22,13 +22,13 @@ public class LevelWin extends GlobalSettings {
 //        取得下一關資料
 //        get the next level data
         try {
-            ((GifImageView)findViewById(R.id.gifImage)).setImageDrawable(new GifDrawable(getResources(), R.drawable.congradulations_page_background ));
+            ((GifImageView)findViewById(R.id.gifImage)).setImageDrawable(new GifDrawable(getResources(), R.drawable.congratulations_page_background));
         } catch (IOException e) {
             e.printStackTrace();
         }
 //        設定背景gif
 //        set the background image(gif)
-        findViewById(R.id.backButton).setOnClickListener(v -> {
+        findViewById(R.id.menuButton).setOnClickListener(v -> {
             startActivity(new Intent(LevelWin.this,Title.class));
             finish();
         });

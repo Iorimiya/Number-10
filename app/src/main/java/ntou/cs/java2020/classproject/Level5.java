@@ -21,7 +21,7 @@ public class Level5 extends LevelActivity {
     @Override
     protected void pagePrepare() {
         super.pagePrepare();
-        findViewById(R.id.backButton).setOnClickListener(v -> {
+        findViewById(R.id.menuButton).setOnClickListener(v -> {
             if (GlobalSettings.skipControl)
                 startActivity(new Intent(Level5.this, Congratulations.class));
 //                跳至Congratulations頁面

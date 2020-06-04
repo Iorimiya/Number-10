@@ -16,7 +16,7 @@ public abstract class GlobalSettings extends AppCompatActivity {
     protected static int lastOpenedLevel=0;
 //    關卡控制選項，可以遊玩的最後一項關卡
 //    opened level control option, the last level which the player can play
-    protected static ArrayList<Integer> scoreList=new ArrayList<>(5);
+    protected static final ArrayList<Integer> scoreList=new ArrayList<>(5);
 //    計分表
     //CAN_DELETE
     protected static MediaPlayer mediaPlayer;

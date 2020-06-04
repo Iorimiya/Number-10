@@ -36,7 +36,7 @@ public class Setting extends GlobalSettings {
 
         findViewById(R.id.recordButton).setOnClickListener((v)->{
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(Setting.this);
-            alertDialog.setTitle(getString(R.string.dialog_title));
+            alertDialog.setTitle(getString(R.string.setting_scoreLabel));
             StringBuilder Message= new StringBuilder();
             for(int counter=0;counter<5;counter++)
                 Message.append(getString(getResources().getIdentifier(String.format(Locale.getDefault(), "level%d", counter + 1), "string", getPackageName()))).append(": ").append(GlobalSettings.scoreList.get(counter)).append('\n');
@@ -54,7 +54,7 @@ public class Setting extends GlobalSettings {
 //        新增開發者選項按鈕的頁面移動監聽器
 //        add the page moving listener of the developer settings button
 
-        findViewById(R.id.backButton).setOnClickListener(v -> {
+        findViewById(R.id.menuButton).setOnClickListener(v -> {
             startActivity(new Intent(Setting.this,Title.class));
             finish();
         });

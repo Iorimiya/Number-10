@@ -22,7 +22,7 @@ public class Level1 extends LevelActivity {
     @Override
     protected void pagePrepare(){
         super.pagePrepare();
-        findViewById(R.id.backButton).setOnClickListener(v -> {
+        findViewById(R.id.menuButton).setOnClickListener(v -> {
             if(GlobalSettings.skipControl) {
                 Intent intent=new Intent(Level1.this, LevelWin.class);
                 intent.putExtra("NextLevel",2);

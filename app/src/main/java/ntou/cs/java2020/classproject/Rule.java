@@ -12,7 +12,7 @@ public class Rule extends GlobalSettings{
         setContentView(R.layout.rule_page);
 //        連結頁面
 //        link page object
-        findViewById(R.id.backButton).setOnClickListener(v -> {
+        findViewById(R.id.menuButton).setOnClickListener(v -> {
             startActivity(new Intent(Rule.this,Title.class));
             finish();
         });

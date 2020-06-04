@@ -7,7 +7,7 @@ public class Block {
 //Block為遊戲中基本之物件類別
 //Block is the basic object class
 
-    private Position position;
+    private final Position position;
 //    該Block位置
 //    the position of the block
     private int number;
