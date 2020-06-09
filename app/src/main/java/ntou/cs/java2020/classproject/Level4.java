@@ -78,7 +78,7 @@ public class Level4 extends LevelActivity {
         super.finishProcess();
         if(score>GlobalSettings.scoreList.get(3)) {
             GlobalSettings.scoreList.set(3, score);
-            getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putInt("level1HighestScore", GlobalSettings.scoreList.get(3)).apply();
+            getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putInt("level4HighestScore", GlobalSettings.scoreList.get(3)).apply();
         }
         Intent intent=new Intent(Level4.this, LevelWin.class);
         intent.putExtra("NextLevel",5);
