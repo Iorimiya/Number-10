@@ -42,10 +42,10 @@
     <string name="game_question4Label" translatable="false">Question4:</string>
     <string name="game_question5Label" translatable="false">Question5:</string>
     <string name="game_question1" translatable="false">☆ x ☆=10</string>
-    <string name="game_question2" translatable="false">☆ x ☆=10</string>
-    <string name="game_question3" translatable="false">☆ x ☆=10</string>
-    <string name="game_question4" translatable="false">☆ x ☆=10</string>
-    <string name="game_question5" translatable="false">☆ x ☆=10</string>
+    <string name="game_question2" translatable="false">3(2+☆) - ☆=10</string>
+    <string name="game_question3" translatable="false">☆ + ☆=10</string>
+    <string name="game_question4" translatable="false">2(5-☆) + ☆=10</string>
+    <string name="game_question5" translatable="false">(7-☆) + (2*☆)=10</string>
     <string name="developerConfig_1" translatable="false">1</string>
     <string name="developerConfig_2" translatable="false">2</string>
     <string name="developerConfig_3" translatable="false">3</string>
