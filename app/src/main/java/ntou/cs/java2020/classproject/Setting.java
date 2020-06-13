@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.*;
+import android.widget.Switch;
 
 import java.util.Locale;
 
@@ -39,7 +39,7 @@ public class Setting extends GlobalSettings {
             alertDialog.setTitle(getString(R.string.setting_scoreLabel));
             StringBuilder Message= new StringBuilder();
             for(int counter=0;counter<5;counter++)
-                Message.append(getString(getResources().getIdentifier(String.format(Locale.getDefault(), "level%d", counter + 1), "string", getPackageName()))).append(": ").append(GlobalSettings.scoreList.get(counter)).append('\n');
+                Message.append(getString(getResources().getIdentifier(String.format(Locale.getDefault(), "global_level%d", counter + 1), "string", getPackageName()))).append(": ").append(GlobalSettings.scoreList.get(counter)).append('\n');
             alertDialog.setMessage(Message.toString());
             alertDialog.setPositiveButton("確定", (DialogInterface dialog, int which)-> {});
             alertDialog.setCancelable(false);
