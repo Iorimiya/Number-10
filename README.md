@@ -1,4 +1,23 @@
-JavaClassProject
+# AndroidClassProject
 
-there are apks in ./apks, and other documents in ./documents
-安裝檔在./apks，其他文件在./documents
+Number 10是一款結合數學方程式以及傳統連連看的單機手遊。
+一、主選單：
+（1）新遊戲：從第一關開始玩。若您原本有闖關記錄，會清除該記錄，然而您的最高得分還是會保留在成績記錄裡。
+（2）關卡選擇：共有5關，您能點選任何您目前闖關的關卡以前的關來玩。
+（3）設定：在此選單中您可以選擇是否播放音樂已經查看您到目前為止每一關的最高得分是多少。
+（4）規則：若您對遊戲規則還不是很清楚，您可以打開規則看一看。另外，在規則中也包含如何得高分的小技巧哦！
+
+二、遊戲進行中的畫面
+（1）重發牌：您可以在找不到牌時按此按鈕，此功能不限按的次數，也不會扣分。
+（2）回主選單：若您必須暫停遊戲時，請按此按鈕，遊戲會幫您保留記錄，但這關您下次必須重新開始。
+
+
+系統需求：
+　Android 6.0(Android Marshmallow)~Android 10.0(Android Q) 
+　screen size:1920*1080 xxhdpi above
+
+安裝方法：
+先下載./apks的apk，再進行安裝即可。
+
+文件：
+Diagram、PPT等文件在./documents
