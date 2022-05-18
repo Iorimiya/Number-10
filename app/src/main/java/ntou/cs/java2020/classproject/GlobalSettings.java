@@ -16,11 +16,14 @@ public abstract class GlobalSettings extends AppCompatActivity {
     protected static int lastOpenedLevel=0;
 //    關卡控制選項，可以遊玩的最後一項關卡
 //    opened level control option, the last level which the player can play
-    protected static final ArrayList<Integer> scoreList=new ArrayList<>(5);
+    private static final int totalLevel = 5;
+//    總關卡數
+//    total levels
+    protected static final ArrayList<Integer> scoreList=new ArrayList<>(totalLevel);
 //    計分表
-    //CAN_DELETE
     protected static MediaPlayer mediaPlayer;
 //    音樂播放器物件
+
     @Override
     protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState);}
     protected boolean initializeMediaPlayer(){
