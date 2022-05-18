@@ -11,6 +11,7 @@ public class Level1 extends LevelActivity {
         this.nowLevelRow = 6;
         this.nowLevelColumn = 3;
         this.nowLevelObject = Level1.this;
+
     }
 
     @Override

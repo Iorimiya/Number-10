@@ -34,10 +34,7 @@ public class DeveloperConfig extends GlobalSettings {
                 getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putInt("hasOpenedLevel", GlobalSettings.lastOpenedLevel).apply();
                 findViewById(R.id.resetLevelButton).setEnabled(true);
                 for (int counter1 = 1; counter1 <= 5; counter1++)
-                    if (GlobalSettings.lastOpenedLevel != counter1)
-                        findViewById(getResources().getIdentifier("lastOpenedLV" + counter1 + "Button", "id", getPackageName())).setEnabled(true);
-                    else
-                        findViewById(getResources().getIdentifier("lastOpenedLV" + counter1 + "Button", "id", getPackageName())).setEnabled(false);
+                    findViewById(getResources().getIdentifier("lastOpenedLV" + counter1 + "Button", "id", getPackageName())).setEnabled(GlobalSettings.lastOpenedLevel != counter1);
             });
 //        新增關卡記錄設定監聽器
 //        add the level record setting listener
@@ -73,6 +70,11 @@ public class DeveloperConfig extends GlobalSettings {
 //        新增返回按鈕的頁面移動監聽器
 //        add the page moving listener of the back button
     }
-    
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(DeveloperConfig.this,Setting.class));
+        finish();
+    }
 
 }

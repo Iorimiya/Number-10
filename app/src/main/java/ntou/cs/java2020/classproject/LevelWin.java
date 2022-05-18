@@ -57,4 +57,10 @@ public class LevelWin extends GlobalSettings {
 //        新增下一關按鈕的頁面移動監聽器
 //        add the page moving listener of the next page button
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(LevelWin.this,LevelSelection.class));
+        finish();
+    }
 }

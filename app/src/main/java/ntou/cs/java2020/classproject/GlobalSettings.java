@@ -1,5 +1,6 @@
 package ntou.cs.java2020.classproject;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -57,4 +58,9 @@ public abstract class GlobalSettings extends AppCompatActivity {
     }
 //    移動狀態至prepared
 //    move the state to "prepared"
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(GlobalSettings.this,Title.class));
+        finish();
+    }
 }

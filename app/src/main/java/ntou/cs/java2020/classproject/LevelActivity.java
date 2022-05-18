@@ -37,7 +37,7 @@ public abstract class LevelActivity extends GlobalSettings {
     protected int score = 0, existBlockCounter, passedTime, bonusTime;
 //    分數、剩餘Block數、經過時間、獎勵時間、現在關卡、分數索引、下一關卡
 
-    protected int nowLevel, nowLevelRow, nowLevelColumn, scoreIndex = nowLevel - 1, nextLevel = nowLevel + 1, nowLevelLayout;
+    protected int nowLevel, nowLevelRow, nowLevelColumn, scoreIndex, nextLevel, nowLevelLayout;
     protected final int rightNumber = 10;
     protected Context nowLevelObject;
 
@@ -46,10 +46,11 @@ public abstract class LevelActivity extends GlobalSettings {
     //    分辨計時參數為開始或結束的列舉
     protected enum ClickedState {none, once}
 //    分辨沒有按鈕被按下、按下第一個按鈕和按下第二個按鈕的FSM指示列舉
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.scoreIndex = nowLevel - 1;
+        this.nextLevel = nowLevel + 1;
         setContentView(nowLevelLayout);
 //        連結頁面
 //        link page object

@@ -49,4 +49,9 @@ public class Title extends GlobalSettings {
 //        新增設定按鈕的頁面移動監聽器
 //        add the page moving listener of the setting button
     }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
 }
