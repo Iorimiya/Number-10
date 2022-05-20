@@ -1,7 +1,5 @@
 package ntou.cs.java2020.classproject;
 
-import android.content.Context;
-
 public class Level4 extends LevelActivity {
 
     public Level4(){
