@@ -17,14 +17,13 @@ public class Setting extends GlobalSettings {
         setContentView(R.layout.setting_page);
 //        連結頁面
 //        link page object
-        ((Switch) findViewById(R.id.musicSwitch)).setChecked(GlobalSettings.musicControl);
+        ((Switch) findViewById(R.id.musicSwitch)).setChecked(musicPlayer.getControlData(getApplicationContext()));
 //        依據音樂控制選項設定音樂控制開關的狀態
 //        set the state of the music control switch according to the music control option
 
         ((Switch) findViewById(R.id.musicSwitch)).setOnCheckedChangeListener((buttonView, isChecked) -> {
-            GlobalSettings.musicControl = isChecked;
-            getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putBoolean("musicControl", GlobalSettings.musicControl).apply();
-            GlobalSettings.playMusic(GlobalSettings.musicControl);
+            musicPlayer.setControlData(getApplicationContext(),isChecked);
+            musicPlayer.updateMusicState();
         });
 //        新增音樂切換監聽器
 //        add the music switch listener
