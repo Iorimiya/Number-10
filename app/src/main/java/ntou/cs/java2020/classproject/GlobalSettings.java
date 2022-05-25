@@ -34,24 +34,21 @@ public abstract class GlobalSettings extends AppCompatActivity {
                 GlobalSettings.scoreList.add(getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).getInt(String.format(Locale.getDefault(), "level%dHighestScore", counter + 1), 0));
 //        從Shared Preferences取得相關資料
 //        get Data from Shared References
-        if (musicPlayer == null) {
-            musicPlayer = new MusicPlayer(getApplicationContext(),R.raw.song_of_the_ancients_devola);
-        }
+        if (musicPlayer == null) musicPlayer = new MusicPlayer(getApplicationContext(),R.raw.song_of_the_ancients_devola);
+
     }
     protected void onStop() {
-        if(musicPlayer.getControlData(getApplicationContext())) {
-            musicPlayer.pause();
-        }
+        musicPlayer.pauseByFlag();
         super.onStop();
     }
 
     protected void onRestart() {
-        musicPlayer.updateMusicState();
+        musicPlayer.startByFlag();
         super.onRestart();
     }
 
     protected void onDestroy() {
-        musicPlayer.updateMusicState();
+        musicPlayer.startByFlag();
         super.onDestroy();
     }
     @Override

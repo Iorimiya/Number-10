@@ -21,10 +21,7 @@ public class Setting extends GlobalSettings {
 //        依據音樂控制選項設定音樂控制開關的狀態
 //        set the state of the music control switch according to the music control option
 
-        ((Switch) findViewById(R.id.musicSwitch)).setOnCheckedChangeListener((buttonView, isChecked) -> {
-            musicPlayer.setControlData(getApplicationContext(),isChecked);
-            musicPlayer.updateMusicState();
-        });
+        ((Switch) findViewById(R.id.musicSwitch)).setOnCheckedChangeListener((buttonView, isChecked) -> musicPlayer.switchMode(getApplicationContext(),isChecked));
 //        新增音樂切換監聽器
 //        add the music switch listener
 

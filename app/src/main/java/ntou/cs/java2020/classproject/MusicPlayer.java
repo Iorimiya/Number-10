@@ -15,16 +15,10 @@ public class MusicPlayer {
             player.release();
             return false;
         });
+        this.player.setOnPreparedListener((player) -> {});
         this.player.setLooping(true);
-        this.updateMusicState();
+        this.startByFlag();
 
-    }
-    private void loadControlData(Context processContext){
-        this.controlFlag = processContext.getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).getBoolean("musicControl", true);
-    }
-
-    private void saveControlData(Context processContext) {
-        processContext.getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putBoolean("musicControl", this.controlFlag).apply();
     }
     public void setControlData(Context processContext, boolean newControlData){
         this.controlFlag = newControlData;
@@ -34,25 +28,31 @@ public class MusicPlayer {
         this.loadControlData(processContext);
         return this.controlFlag;
     }
-    public void updateMusicState(){
-        if(this.player.isPlaying()){
-            this.pause();
-        }
-        if(this.controlFlag){
-            this.start();
-        }else{
-            this.stop();
-        }
+    public void startByFlag(){
+        if(this.controlFlag) this.player.start();
     }
-    public void start(){
-        this.player.start();
+    public void pauseByFlag(){
+        if(this.controlFlag) this.player.pause();
+
     }
-    public void stop(){
+    public void switchMode(Context processContext, boolean newStatus){
+        this.setControlData(processContext,newStatus);
+        if(this.controlFlag) this.player.start();
+        else this.stop();
+    }
+
+    private void loadControlData(Context processContext){
+        this.controlFlag = processContext.getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).getBoolean("musicControl", true);
+    }
+
+    private void saveControlData(Context processContext) {
+        processContext.getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putBoolean("musicControl", this.controlFlag).apply();
+    }
+
+
+    private void stop(){
         this.player.stop();
         this.player.prepareAsync();
-    }
-    public void pause(){
-        this.player.pause();
     }
 
 }
