@@ -1,4 +1,5 @@
-# AndroidClassProject
+# Number 10
+### Java Class 2020 / Class Project
 
 Number 10是一款結合數學方程式以及傳統連連看的單機手遊。
 一、主選單：
@@ -13,7 +14,7 @@ Number 10是一款結合數學方程式以及傳統連連看的單機手遊。
 
 
 系統需求：
-　Android 6.0(Android Marshmallow)~Android 10.0(Android Q) 
+　Android 6.0(Android Marshmallow)~Android 12.0(Android S) 
 　screen size:1920*1080 xxhdpi above
 
 安裝方法：
