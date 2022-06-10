@@ -12,25 +12,25 @@ public class LevelSelection extends GlobalSettings {
 //        連結頁面
 //        link page object
         findViewById(R.id.menuButton).setOnClickListener(v -> {
-            startActivity(new Intent(LevelSelection.this,Title.class));
+            startActivity(new Intent(LevelSelection.this, Title.class));
             finish();
         });
 //        新增下一關按鈕的頁面移動監聽器
 //        add the page moving listener of the back button
         findViewById(R.id.level1Button).setOnClickListener(v -> {
-            startActivity(new Intent(LevelSelection.this,Level1.class));
+            startActivity(new Intent(LevelSelection.this, Level1.class));
             finish();
         });
 //        新增第一關按鈕的頁面移動監聽器
 //        add the page moving listener of the level 1 button
         findViewById(R.id.level2Button).setOnClickListener(v -> {
-            startActivity(new Intent(LevelSelection.this,Level2.class));
+            startActivity(new Intent(LevelSelection.this, Level2.class));
             finish();
         });
 //        新增第二關按鈕的頁面移動監聽器
 //        add the page moving listener of the level 2 button
         findViewById(R.id.level3Button).setOnClickListener(v -> {
-            startActivity(new Intent(LevelSelection.this,Level3.class));
+            startActivity(new Intent(LevelSelection.this, Level3.class));
             finish();
         });
 //        新增第三關按鈕的頁面移動監聽器
@@ -47,7 +47,7 @@ public class LevelSelection extends GlobalSettings {
         });
 //        新增第五關按鈕的頁面移動監聽器
 //        add the page moving listener of the level 5 button
-        if(GlobalSettings.lastOpenedLevel==0)
+        if (GlobalSettings.lastOpenedLevel == 0)
             findViewById(getResources().getIdentifier("level1Button", "id", getPackageName())).setEnabled(true);
         else for (int counter = 1; counter <= GlobalSettings.lastOpenedLevel; counter++)
             findViewById(getResources().getIdentifier("level" + counter + "Button", "id", getPackageName())).setEnabled(true);
