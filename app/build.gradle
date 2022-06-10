@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('D:\\Data\\SoftwareProjects\\AndroidStudio\\SignedKey\\Key.jks')
+            storePassword 'y8u9k0i1m1i1'
+            keyAlias 'key0'
+            keyPassword 'y8u9k0i1m1i1'
+        }
+    }
     compileSdk 32
 
     defaultConfig {
