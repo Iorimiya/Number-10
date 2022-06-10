@@ -23,7 +23,7 @@ public abstract class LevelActivity extends GlobalSettings {
     protected Chronometer chronometer;
     //    計時器物件
     protected TextView scoreDisplayArea;
-//    分數顯示區域
+    //    分數顯示區域
 
     //Event Object
     protected Block firstClicked, secondClicked;
@@ -31,11 +31,11 @@ public abstract class LevelActivity extends GlobalSettings {
     protected ClickedState nowClickedState;
     //    分辨沒有按鈕被按下、按下第一個按鈕和按下第二個按鈕的FSM指示變數
     protected final ArrayList<ArrayList<Integer>> connectibleNumbers = new ArrayList<>();
-//    可以被消除的整數清單
+    //    可以被消除的整數清單
 
     //game parameter
     protected int score = 0, existBlockCounter, passedTime, bonusTime;
-//    分數、剩餘Block數、經過時間、獎勵時間、現在關卡、分數索引、下一關卡
+    //    分數、剩餘Block數、經過時間、獎勵時間、現在關卡、分數索引、下一關卡
 
     protected int nowLevel, nowLevelRow, nowLevelColumn, scoreIndex, nextLevel, nowLevelLayout;
     protected final int rightNumber = 10;
@@ -45,7 +45,7 @@ public abstract class LevelActivity extends GlobalSettings {
     protected enum TimerState {start, stop}
     //    分辨計時參數為開始或結束的列舉
     protected enum ClickedState {none, once}
-//    分辨沒有按鈕被按下、按下第一個按鈕和按下第二個按鈕的FSM指示列舉
+    //    分辨沒有按鈕被按下、按下第一個按鈕和按下第二個按鈕的FSM指示列舉
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -288,6 +288,7 @@ public abstract class LevelActivity extends GlobalSettings {
             getSharedPreferences("NumberTenSaveData", MODE_PRIVATE).edit().putInt("hasOpenedLevel", GlobalSettings.lastOpenedLevel).apply();
         }
         startActivity(intent);
+        finish();
     }
 
 }
